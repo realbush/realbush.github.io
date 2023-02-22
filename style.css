@@ -5,7 +5,7 @@ style.css
 }
 
 body {
-    background: url("44.jpg");/*设置背景图片*/
+    background: url("20230219-10.png");/*设置背景图片*/
     background-repeat: no-repeat;
     background-attachment: fixed;/*设置背景图不随网页滑动而改变*/
     background-size: cover;
