@@ -3,15 +3,14 @@ body {
     background-image: linear-gradient(#dbfcc1, #9ee7f8);
 }
 
-span {
-    position: absolute;
-    top: 50%;
-    padding: 10px;
-}
-
 .title {
     height: 50px;
     background-color: bisque;
+}
+
+.titletext{
+    color:#9cf;
+    padding: 15px;
 }
 
 .body {
