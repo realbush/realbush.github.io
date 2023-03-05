@@ -14,11 +14,26 @@
             <a href="https://github.com/realbush/realbush.github.io" target="_blank">from BUSH</a>
         </div>
     </div>
-    <div id="search">
-        <form action="https://www.bing.com/search" target="_blank" method="get">
-            <input type="text" id="search-input" name="q" placeholder="你要bing干点啥" autofocus>
-        </form>
     </div>
+
+    <div id="search">
+        <select id="searchs" onchange="searchs()">
+            <option value="bing">bing</option>
+            <option value="google">google</option>
+            <option value="baidu">baidu</option>
+        </select>
+        <form action="https://www.bing.com/search" target="_blank" method="get">
+            <input id="bing" type="text" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
+        </form>
+        <form action="https://www.google.com/search" target="_blank" method="get">
+            <input id="google" type="hidden" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
+        </form>
+        <form action="https://www.baidu.com/s" target="_blank" method="get">
+            <input id="baidu" type="hidden" class="search-input" name="wd" placeholder="你要baidu干点啥" autofocus>
+        </form>
+
+    </div>
+
     <div id="hangs">
         <div class="hang">
             <a href="https://www.bilibili.com/" target="_blank">b站</a>
@@ -60,4 +75,6 @@
             <a href="https://cv2.work/" target="_blank">vpn</a>
         </div>
     </div>
+
+    <script src="wzjs.js"></script>
 </body>
