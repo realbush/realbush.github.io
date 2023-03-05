@@ -22,6 +22,24 @@ body {
     text-shadow: -3px -3px 3px #a8a8a8;
 }
 
+#searchs {
+    text-align: center;
+    float: left;
+    height: 40px;
+    width: 80px;
+    background: transparent;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "Microsoft YaHei";
+    line-height: 44px;
+    outline: none;
+    margin-bottom: 20px;
+    border-color: gold;
+    border-width: 1px;
+    border-radius: 20px;
+    box-shadow: 0 0px 20px 1px rgba(255, 255, 255, 0.482),0 0 10px rgba(238, 0, 255, 0.192) inset;
+}
+
 #search {
     height: 100%;
     padding-top: 50px;
@@ -29,7 +47,7 @@ body {
     padding-right: 15%;
 }
 
-#search-input {
+.search-input {
     background: transparent;
     background-color: rgba(12, 197, 253, 0.016);
     font-size: 16px;
@@ -38,6 +56,7 @@ body {
     width: 500px;
     height: 40px;
     line-height: 44px;
+    outline: none;
     margin-bottom: 20px;
     border-color: gold;
     border-width: 1px;
