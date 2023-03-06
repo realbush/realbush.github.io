@@ -1,19 +1,14 @@
 body {
     background-color: rgba(153, 204, 255, 0.199);
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
 #title {
-    height: 50px;
+    height: 100%;
     padding-left: 100px;
-    padding-top: 10px;
-}
-
-#xin {
-    height: 50px;
-    float: left;
 }
 
 #titletext {
@@ -22,16 +17,16 @@ body {
     text-shadow: -3px -3px 3px #a8a8a8;
 }
 
-#time{
+#time {
     width: 100%;
     text-align: center;
     font-size: 50px;
     font-family: "Microsoft YaHei";
     color: white;
-    text-shadow: 0 0 5px #f2ff00,0 0 10px #f2ff00,0 0 20px #f2ff00,0 0 2px black;
+    text-shadow: 0 0 5px #f2ff00, 0 0 10px #f2ff00, 0 0 20px #f2ff00, 0 0 2px black;
 }
 
-#searchs {
+#Search-Engines {
     text-align: center;
     float: left;
     height: 40px;
@@ -46,7 +41,7 @@ body {
     border-color: gold;
     border-width: 1px;
     border-radius: 20px;
-    box-shadow: 0 0px 20px 1px rgba(255, 255, 255, 0.482),0 0 10px rgba(238, 0, 255, 0.192) inset;
+    box-shadow: 0 0px 20px 1px rgba(255, 255, 255, 0.482), 0 0 10px rgba(238, 0, 255, 0.192) inset;
 }
 
 #search {
@@ -125,3 +120,46 @@ a:active {
 }
 
 /*鼠标点击链接时显示为黄色*/
+@media screen and (max-width: 960px) {
+    #title {
+        padding-top: 5px;
+        padding-left: 10px;
+    }
+
+    #titletext {
+        display: inline-block;
+        padding: 5px;
+    }
+
+    #Search-Engines {
+        width: 40px;
+    }
+
+    #search {
+        padding-top: 2%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .search-input {
+        width: 80%;
+    }
+
+    #hangs {
+        padding-left: 5%;
+        padding-right: 5%;
+        text-shadow: 2px 3px 4px #a8a8a8;
+    }
+
+    .hang {
+        float: left;
+        text-align: center;
+        border-radius: 10px;
+        padding-top: 10px;
+        margin: 1%;
+        width: 22%;
+        height: 40px;
+        background-color: rgba(0, 128, 255, 0.082);
+        box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
+    }
+}
