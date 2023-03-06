@@ -2,7 +2,7 @@ var g = document.getElementById("google")
 var d = document.getElementById("baidu")
 var b = document.getElementById("bing")
 
-function searchs() {
+function SE() {
     var x = document.getElementById("searchs").value;
 
     if (x == "google") {
