@@ -3,7 +3,7 @@ var d = document.getElementById("baidu")
 var b = document.getElementById("bing")
 
 function SE() {
-    var x = document.getElementById("searchs").value;
+    var x = document.getElementById("Search-Engines").value;
 
     if (x == "google") {
         b.type = "hidden";
