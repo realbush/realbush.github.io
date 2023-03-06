@@ -28,7 +28,7 @@ body {
     font-size: 50px;
     font-family: "Microsoft YaHei";
     color: white;
-    text-shadow: 0 0 5px #f2ff00,0 0 10px #f2ff00,0 0 20px #f2ff00;
+    text-shadow: 0 0 5px #f2ff00,0 0 10px #f2ff00,0 0 20px #f2ff00,0 0 2px black;
 }
 
 #searchs {
