@@ -108,6 +108,7 @@ a {
 }
 
 #choucha {
+    right: 0;
     background-color: rgba(153, 204, 255, 0.05);
     margin-left: 5px;
     cursor: pointer;
