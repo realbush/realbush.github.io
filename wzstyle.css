@@ -22,7 +22,11 @@ body {
     display: inline-block;
     padding: 15px;
     text-shadow: -3px -3px 3px #a8a8a8;
-    text-decoration:none;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 #time {
@@ -36,7 +40,7 @@ body {
 
 #Search-Engines {
     background-color: transparent;
-    cursor:pointer;
+    cursor: pointer;
     float: left;
     height: 40px;
     text-align: center;
@@ -72,13 +76,13 @@ body {
 
 #hangs {
     height: 100%;
-    padding-left: 15%;
-    padding-right: 15%;
-    text-shadow: 2px 3px 4px #a8a8a8;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10px;
 }
 
 .hang {
-    float: left;
+    position: relative;
     text-align: center;
     border-radius: 10px;
     margin: 5px;
@@ -87,21 +91,54 @@ body {
     background-color: rgba(153, 204, 255, 0.05);
     box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.hang:hover{
+.hang:hover {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
 
-#Search-Engines:hover{
+#Search-Engines:hover {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
 
-a{
-    text-decoration:none;
+#practice {
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
+#choucha {
+    background-color: rgba(153, 204, 255, 0.05);
+    margin-left: 5px;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
+}
+#choucha:hover {
+    box-shadow: inset 3px 3px 12px #a8a8a8;
+}
+#neirong {
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #a8a8a8;
+}
+
+#dingyi {
+    text-align: center;
+    padding: 2%;
+    font-size: 20px;
+}
+#x{
+    display: none;
+}
 /*鼠标点击链接时显示为黄色*/
 @media screen and (max-width: 960px) {
     #title {
@@ -129,14 +166,19 @@ a{
     }
 
     #hangs {
-        padding-left: 5%;
-        padding-right: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
         text-shadow: 2px 3px 4px #a8a8a8;
     }
 
     .hang {
         margin: 1%;
         width: 22%;
-        height: 50px;
+        height: 40px;
+    }
+
+    #practice {
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }

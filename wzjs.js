@@ -47,3 +47,19 @@ function shijian() {
     document.getElementById("time").innerHTML = now;
     setTimeout("shijian()", 1000);
 }
+var dingyi  = ["跳过", "测试", "尝试一下"]
+var neirong = {"跳过":"tiaoguo", "测试":"ceshi", "尝试一下":"changshiyixia"};
+function choucha() {
+    var suiji;
+    var x;
+
+    x = document.getElementById("x").innerHTML;
+    if (x == 1) {
+        document.getElementById('x').innerHTML=0;
+        document.getElementById('dingyi').innerHTML =neirong[document.getElementById('dingyi').innerHTML];
+    }
+    else {
+        document.getElementById('x').innerHTML=1;
+        document.getElementById('dingyi').innerHTML = dingyi[Math.floor(Math.random() * dingyi.length)];
+    }
+}
