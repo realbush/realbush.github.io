@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(153, 204, 255, 0.199);
+    background-color: rgba(153, 204, 255, 0.2);
     width: 100%;
     height: 100%;
     margin: 0;
@@ -34,21 +34,18 @@ body {
 }
 
 #Search-Engines {
-    text-align: center;
+    background-color: transparent;
+    cursor:pointer;
     float: left;
     height: 40px;
-    width: 80px;
-    background: transparent;
+    text-align: center;
     font-size: 16px;
-    line-height: 24px;
     font-family: "Microsoft YaHei";
-    line-height: 44px;
     outline: none;
     margin-bottom: 20px;
-    border-color: gold;
     border-width: 1px;
     border-radius: 20px;
-    box-shadow: 0 0px 20px 1px rgba(255, 255, 255, 0.482), 0 0 10px rgba(238, 0, 255, 0.192) inset;
+    box-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 
 #search {
@@ -59,21 +56,17 @@ body {
 }
 
 .search-input {
-    background: transparent;
     background-color: rgba(12, 197, 253, 0.016);
     font-size: 16px;
-    line-height: 24px;
     font-family: "Microsoft YaHei";
     width: 500px;
     height: 40px;
-    line-height: 44px;
     outline: none;
     margin-bottom: 20px;
-    border-color: gold;
     border-width: 1px;
     border-radius: 20px;
     padding-inline-start: 16px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 #hangs {
@@ -87,43 +80,21 @@ body {
     float: left;
     text-align: center;
     border-radius: 10px;
-    padding-top: 5px;
     margin: 5px;
     width: 100px;
-    height: 30px;
-    background-color: rgba(153, 204, 255, 0.082);
-    box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
+    height: 40px;
+    background-color: rgba(153, 204, 255, 0.05);
+    box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
+    border: none;
+    cursor:pointer;
 }
 
-#titletext a:link {
-    text-decoration: none;
-    color: #9cf;
+.hang:hover{
+    box-shadow: inset 3px 3px 12px #a8a8a8;
 }
 
-.hang a:link {
-    text-decoration: none;
-    color: blue;
-}
-
-/*未访问的链接显示为蓝色,text-decoration:none将下划线隐藏*/
-
-.hang a:visited {
-    text-decoration: none;
-    color: blue;
-}
-
-/*用户已访问过的链接显示蓝色*/
-
-a:hover {
-    text-decoration: none;
-    color: red;
-}
-
-/*鼠标放置在链接上时显示为粉色*/
-
-a:active {
-    text-decoration: none;
-    color: yellow;
+#Search-Engines:hover{
+    box-shadow: inset 3px 3px 12px #a8a8a8;
 }
 
 /*鼠标点击链接时显示为黄色*/
@@ -159,14 +130,8 @@ a:active {
     }
 
     .hang {
-        float: left;
-        text-align: center;
-        border-radius: 10px;
-        padding-top: 10px;
         margin: 1%;
         width: 22%;
-        height: 40px;
-        background-color: rgba(0, 128, 255, 0.082);
-        box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
+        height: 50px;
     }
 }

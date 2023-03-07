@@ -18,15 +18,15 @@
     <div id="time"></div>
     <div id="search">
         <select id="Search-Engines" onchange="SE()">
-            <option value="bing">bing</option>
             <option value="google">google</option>
+            <option value="bing">bing</option>
             <option value="baidu">baidu</option>
         </select>
-        <form action="https://www.bing.com/search" target="_blank" method="get">
-            <input id="bing" type="text" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
-        </form>
         <form action="https://www.google.com/search" target="_blank" method="get">
-            <input id="google" type="hidden" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
+            <input id="google" type="text" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
+        </form>
+        <form action="https://www.bing.com/search" target="_blank" method="get">
+            <input id="bing" type="hidden" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
         </form>
         <form action="https://www.baidu.com/s" target="_blank" method="get">
             <input id="baidu" type="hidden" class="search-input" name="wd" placeholder="你要baidu干点啥" autofocus>
@@ -34,61 +34,25 @@
     </div>
 
     <div id="hangs">
-        <button class="hang">
-            <a href="https://www.bilibili.com/" target="_blank">b站</a>
-        </button>
-        <div class="hang">
-            <a href="https://www.douyin.com/" target="_blank">抖音</a>
-        </div>
-        <div class="hang">
-            <a href="https://www.huya.com/lpl" target="_blank">lpl</a>
-        </div>
-        <div class="hang">
-            <a href="https://www.bing.com/" target="_blank">bing</a>
-        </div>
-        <div class="hang">
-            <a href="https://zhaopin.sgcc.com.cn/" target="_blank">国网招聘</a>
-        </div>
-        <div class="hang">
-            <a href="https://www.runoob.com/" target="_blank">菜鸟</a>
-        </div>
-        <div class="hang">
-            <a href="https://uiverse.io/" target="_blank">css设计</a>
-        </div>
-        <div class="hang">
-            <a href="https://www.ketangpai.com/" target="_blank">课堂派</a>
-        </div>
-        <div class="hang">
-            <a href="https://snapdrop.net/" target="_blank">文件传输</a>
-        </div>
-        <div class="hang">
-            <a href="https://www.zhihu.com/" target="_blank">知乎</a>
-        </div>
-        <div class="hang">
-            <a href="https://www.cnki.net/" target="_blank">知网</a>
-        </div>
-        <div class="hang">
-            <a href="https://fanyi.baidu.com/" target="_blank">百度翻译</a>
-        </div>
-        <div class="hang">
-            <a href="https://jwxt.ncepu.edu.cn/jsxsd/" target="_blank">学生服务平台</a>
-        </div>
-        <div class="hang">
-            <a href="https://www.google.com/" target="_blank">google</a>
-        </div>
-        <div class="hang">
-            <a href="https://chat.openai.com" target="_blank">chat</a>
-        </div>
-        <div class="hang">
-            <a href="https://cv2.work/" target="_blank">vpn</a>
-        </div>
-        <div class="hang">
-            <a href="https://mail.google.com/" target="_blank">gmail</a>
-        </div>
-        <div class="hang">
-            <a href="https://sms-activate.org/" target="_blank">sms</a>
-        </div>
+        <button class="hang" onclick="window.open('https://www.bilibili.com/')">b站</button>
+        <button class="hang" onclick="window.open('https://www.douyin.com/')">抖音</button>
+        <button class="hang" onclick="window.open('https://www.huya.com/lpl')">lpl</button>
+        <button class="hang" onclick="window.open('https://www.bing.com/')">bing</button>
+        <button class="hang" onclick="window.open('https://zhaopin.sgcc.com.cn/')">国网招聘</button>
+        <button class="hang" onclick="window.open('https://www.runoob.com/')">菜鸟</button>
+        <button class="hang" onclick="window.open('https://uiverse.io/')">css设计</button>
+        <button class="hang" onclick="window.open('https://www.ketangpai.com/')">课堂派</button>
+        <button class="hang" onclick="window.open('https://snapdrop.net/')">文件传输</button>
+        <button class="hang" onclick="window.open('https://www.zhihu.com/')">知乎</button>
+        <button class="hang" onclick="window.open('https://www.cnki.net/')">知网</button>
+        <button class="hang" onclick="window.open('https://fanyi.baidu.com/')">百度翻译</button>
+        <button class="hang" onclick="window.open('https://jwxt.ncepu.edu.cn/jsxsd/')">学生服务平台</button>
+        <button class="hang" onclick="window.open('https://www.google.com/')">google</button>
+        <button class="hang" onclick="window.open('https://chat.openai.com')">chat</button>
+        <button class="hang" onclick="window.open('https://cv2.work/')">vpn</button>
+        <button class="hang" onclick="window.open('https://mail.google.com/')">gmail</button>
+        <button class="hang" onclick="window.open('https://sms-activate.org/')">sms</button>
     </div>
-    <div id="foot">version:1.0.7</div>
+    <div id="foot">version:1.0.9</div>
     <script src="wzjs.js"></script>
 </body>
