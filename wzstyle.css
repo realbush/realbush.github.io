@@ -158,7 +158,7 @@ a {
     }
 
     #time {
-        font-size: 30px;
+        display: none;
     }
 
     #Search-Engines {
