@@ -103,12 +103,12 @@ a {
 }
 
 #practice {
+    text-align: right;
     margin-left: 15%;
     margin-right: 15%;
 }
 
 #choucha {
-    right: 0;
     background-color: rgba(153, 204, 255, 0.05);
     margin-left: 5px;
     cursor: pointer;
