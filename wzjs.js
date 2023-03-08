@@ -2,7 +2,11 @@
 var g = document.getElementById("google")
 var d = document.getElementById("baidu")
 var b = document.getElementById("bing")
-
+AV.init({
+    appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
+    appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
+    serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
+});
 function SE() {
     var x = document.getElementById("Search-Engines").value;
 
@@ -33,14 +37,23 @@ function shijian() {
 
 //练习部分
 var xhr = new XMLHttpRequest();
-    xhr.open('get', 'wz.json');
-    xhr.send();
-    xhr.onload = function () {
-        respond = this.responseText;
-        keys = Object.keys(JSON.parse(respond));
-        values = Object.values(JSON.parse(respond));
-        console.log(JSON.parse(respond));
-    }
+xhr.open('get', 'wz.json');
+xhr.send();
+xhr.onload = function () {
+    respond = this.responseText;
+    keys = Object.keys(JSON.parse(respond));
+    values = Object.values(JSON.parse(respond));
+    console.log(JSON.parse(respond));
+}
+/*
+var geshu;
+var query = new AV.Query('bush');
+query.select(['keys','values'])
+query.count().then((count) => {
+    geshu = (`${count}`);
+    console.log(geshu);
+});
+*/
 function choucha() {
     var x = document.getElementById("x").innerHTML;
     if (x == 1) {
@@ -53,3 +66,16 @@ function choucha() {
         document.getElementById('dingyi').innerHTML = keys[num];
     }
 }
+
+
+
+
+/*
+var TestObject = AV.Object.extend('bush');
+var testObject = new TestObject();
+
+testObject.save({
+    keys:'诺顿定理',
+    values:'一个与外部电路无耦合关系的线性含源电阻性二段网络N，对外电路而言，可以用一个电流源和一个电导相串联'
+});
+*/
