@@ -140,7 +140,8 @@ a {
 #x{
     display: none;
 }
-/*鼠标点击链接时显示为黄色*/
+
+/* 手机显示更改部分 */
 @media screen and (max-width: 960px) {
     #title {
         padding-top: 5px;
@@ -151,7 +152,9 @@ a {
         display: inline-block;
         padding: 5px;
     }
-
+    #time {
+        font-size: 30px;
+    }
     #Search-Engines {
         width: 40px;
     }

@@ -1,3 +1,4 @@
+//可修改搜索引擎
 var g = document.getElementById("google")
 var d = document.getElementById("baidu")
 var b = document.getElementById("bing")
@@ -21,45 +22,34 @@ function SE() {
         d.type = "hidden";
     }
 }
+//时钟
 function shijian() {
     var date = new Date();
     var now = "";
-    if (date.getHours() < 10) {
-        hours = "0" + date.getHours();
-    }
-    else {
-        hours = date.getHours();
-    }
-    if (date.getMinutes() < 10) {
-        minutes = "0" + date.getMinutes();
-    }
-    else {
-        minutes = date.getMinutes();
-    }
-    if (date.getSeconds() < 10) {
-        seconds = "0" + date.getSeconds();
-    }
-    else {
-        seconds = date.getSeconds();
-    }
-    now = now + hours + ":" + minutes + ":" + seconds;
-
+    now = date.toLocaleTimeString();
     document.getElementById("time").innerHTML = now;
     setTimeout("shijian()", 1000);
 }
-var dingyi  = ["跳过", "测试", "尝试一下"]
-var neirong = {"跳过":"tiaoguo", "测试":"ceshi", "尝试一下":"changshiyixia"};
-function choucha() {
-    var suiji;
-    var x;
 
-    x = document.getElementById("x").innerHTML;
+//练习部分
+var xhr = new XMLHttpRequest();
+    xhr.open('get', 'wz.json');
+    xhr.send();
+    xhr.onload = function () {
+        respond = this.responseText;
+        keys = Object.keys(JSON.parse(respond));
+        values = Object.values(JSON.parse(respond));
+        console.log(JSON.parse(respond));
+    }
+function choucha() {
+    var x = document.getElementById("x").innerHTML;
     if (x == 1) {
-        document.getElementById('x').innerHTML=0;
-        document.getElementById('dingyi').innerHTML =neirong[document.getElementById('dingyi').innerHTML];
+        document.getElementById('x').innerHTML = 0;
+        document.getElementById('dingyi').innerHTML = values[num];
     }
     else {
-        document.getElementById('x').innerHTML=1;
-        document.getElementById('dingyi').innerHTML = dingyi[Math.floor(Math.random() * dingyi.length)];
+        document.getElementById('x').innerHTML = 1;
+        num = Math.floor(Math.random() * keys.length);
+        document.getElementById('dingyi').innerHTML = keys[num];
     }
 }
