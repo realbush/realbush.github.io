@@ -35,6 +35,9 @@ function shijian() {
     setTimeout("shijian()", 1000);
 }
 
+
+
+
 //练习部分
 var xhr = new XMLHttpRequest();
 xhr.open('get', 'wz.json');
@@ -68,7 +71,16 @@ function choucha() {
 }
 
 
+/*
 
+    var bingimage = new XMLHttpRequest();
+    bi = bingimage.open('get', 'https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN');
+    bingimage.send();
+    xhr.onload = function (){
+        respond = this.responseText;
+        console.log(JSON.parse(respond));
+
+    }
 
 /*
 var TestObject = AV.Object.extend('bush');
