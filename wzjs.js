@@ -61,12 +61,12 @@ function choucha() {
     var x = document.getElementById("x").innerHTML;
     if (x == 1) {
         document.getElementById('x').innerHTML = 0;
-        document.getElementById('dingyi').innerHTML = values[num];
+        document.getElementById('dingyi').innerHTML = "A:"+values[num];
     }
     else {
         document.getElementById('x').innerHTML = 1;
         num = Math.floor(Math.random() * keys.length);
-        document.getElementById('dingyi').innerHTML = keys[num];
+        document.getElementById('dingyi').innerHTML = "Q:"+keys[num];
     }
 }
 
