@@ -2,11 +2,15 @@
 var g = document.getElementById("google")
 var d = document.getElementById("baidu")
 var b = document.getElementById("bing")
+var q = document.getElementById("qetal")
+var s = document.getElementById("sogou")
+
+/*
 AV.init({
     appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
     appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
     serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
-});
+});*/
 function SE() {
     var x = document.getElementById("Search-Engines").value;
 
@@ -14,16 +18,36 @@ function SE() {
         b.type = "hidden";
         g.type = "text";
         d.type = "hidden";
+        q.type = "hidden";
+        s.type = "hidden";
     }
     else if (x == "baidu") {
         b.type = "hidden";
         g.type = "hidden";
         d.type = "text";
+        q.type = "hidden";
+        s.type = "hidden";
     }
-    else {
+    else if (x == "bing") {
         b.type = "text";
         g.type = "hidden";
         d.type = "hidden";
+        q.type = "hidden";
+        s.type = "hidden";
+    }
+    else if (x == "qetal") {
+        b.type = "hidden";
+        g.type = "hidden";
+        d.type = "hidden";
+        q.type = "text";
+        s.type = "hidden";
+    }
+    else {
+        b.type = "hidden";
+        g.type = "hidden";
+        d.type = "hidden";
+        q.type = "hidden";
+        s.type = "text";
     }
 }
 //时钟
@@ -61,12 +85,12 @@ function choucha() {
     var x = document.getElementById("x").innerHTML;
     if (x == 1) {
         document.getElementById('x').innerHTML = 0;
-        document.getElementById('dingyi').innerHTML = "A:"+values[num];
+        document.getElementById('dingyi').innerHTML = "A:" + values[num];
     }
     else {
         document.getElementById('x').innerHTML = 1;
         num = Math.floor(Math.random() * keys.length);
-        document.getElementById('dingyi').innerHTML = "Q:"+keys[num];
+        document.getElementById('dingyi').innerHTML = "Q:" + keys[num];
     }
 }
 
