@@ -60,8 +60,6 @@ function shijian() {
 }
 
 
-
-
 //练习部分
 var xhr = new XMLHttpRequest();
 xhr.open('get', 'wz.json');
@@ -72,6 +70,9 @@ xhr.onload = function () {
     values = Object.values(JSON.parse(respond));
     console.log(JSON.parse(respond));
 }
+
+
+
 /*
 var geshu;
 var query = new AV.Query('bush');
@@ -81,6 +82,7 @@ query.count().then((count) => {
     console.log(geshu);
 });
 */
+
 function choucha() {
     var x = document.getElementById("x").innerHTML;
     if (x == 1) {
@@ -114,4 +116,49 @@ testObject.save({
     keys:'诺顿定理',
     values:'一个与外部电路无耦合关系的线性含源电阻性二段网络N，对外电路而言，可以用一个电流源和一个电导相串联'
 });
+*/
+
+
+
+/*// controller.js
+const { Controller, Get, Redirect } = require('@nestjs/common');
+const UtilService = require('./utilService');
+const controllerPath = 'redirect_to_bing_daily_picture_address';
+
+@Controller()
+class BingDailyPictureController {
+  constructor(utilService) {
+    this.utilService = utilService;
+  }
+
+  // GET 请求重定向到必应每日图片地址
+  @Get(controllerPath)
+  // 使用 302 状态码进行重定向
+  @Redirect('https://cn.bing.com', 302)
+  async redirect() {
+    // 调用 UtilService 中的方法获取必应每日图片地址
+    return { url: await this.utilService.getBingDailyPictureUrl() };
+  }
+}
+
+module.exports = BingDailyPictureController;
+
+// utilService.js
+const axios = require('axios');
+const baseUrl = 'https://cn.bing.com';
+
+class UtilService {
+  // 获取必应每日图片地址
+  async getBingDailyPictureUrl() {
+    const res = await axios({
+      url: `${baseUrl}/HPImageArchive.aspx?format=js&idx=0&n=1`,
+      method: 'GET',
+      responseType: 'json',
+    });
+    // 返回必应每日图片地址
+    return `${baseUrl}${res.data.images[0].url}`;
+  }
+}
+
+module.exports = UtilService;
 */
