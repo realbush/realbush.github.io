@@ -95,7 +95,14 @@ function choucha() {
         document.getElementById('dingyi').innerHTML = "Q:" + keys[num];
     }
 }
-
+navigator.mediaDevices.getUserMedia({audio: true, video: true})
+  .then(function(stream) {
+    var videoElement = document.querySelector('video');
+    videoElement.srcObject = stream;
+  })
+  .catch(function(err) {
+    console.log('获取本地音视频流失败：' + err);
+  });
 
 /*
 
