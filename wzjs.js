@@ -95,6 +95,9 @@ function choucha() {
         document.getElementById('dingyi').innerHTML = "Q:" + keys[num];
     }
 }
+
+/*
+//获取音视频
 navigator.mediaDevices.getUserMedia({audio: true, video: true})
   .then(function(stream) {
     var videoElement = document.querySelector('video');
