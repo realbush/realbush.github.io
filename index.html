@@ -11,71 +11,87 @@
 </head>
 
 <body onload="shijian()">
+    <!-- 标题 -->
     <div id="title">
         <div class="icon"></div>
         <div id="titletext">
             <a href="https://github.com/realbush/realbush.github.io" target="_blank">from BUSH</a>
         </div>
     </div>
+    <!-- 时间 -->
     <div id="time"></div>
-    <div id="search">
-        <select id="Search-Engines" onchange="SE()">
-            <option value="google">google</option>
-            <option value="bing">bing</option>
-            <option value="baidu">baidu</option>
-            <option value="qetal">qetal</option>
-            <option value="sogou">sogou</option>
-        </select>
-        <form action="https://www.google.com/search" target="_blank" method="get">
-            <input id="google" type="text" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
-        </form>
-        <form action="https://www.bing.com/search" target="_blank" method="get">
-            <input id="bing" type="hidden" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
-        </form>
-        <form action="https://www.baidu.com/s" target="_blank" method="get">
-            <input id="baidu" type="hidden" class="search-input" name="wd" placeholder="你要baidu干点啥" autofocus>
-        </form>
-        <form action="https://www.petalsearch.com/search" target="_blank" method="get">
-            <input id="qetal" type="hidden" class="search-input" name="query" placeholder="你要qetal干点啥" autofocus>
-        </form>
-        <form action="https://www.sogou.com/web" target="_blank" method="get">
-            <input id="sogou" type="hidden" class="search-input" name="query" placeholder="你要sogou干点啥" autofocus>
-        </form>
+
+    <div id="massages">
+        <div id="massages_out"></div>
+        <div id="massages_in">
+            <input id="in" type="text" placeholder="拉个屎也要记录一下">
+        </div>
+    </div>
+    <div id="bush-searchs">
+        <div id="search">
+            <select id="Search-Engines" onchange="SE()">
+                <option value="google">google</option>
+                <option value="bing">bing</option>
+                <option value="baidu">baidu</option>
+                <option value="qetal">qetal</option>
+                <option value="sogou">sogou</option>
+            </select>
+            <form action="https://www.google.com/search" target="_blank" method="get">
+                <input id="google" type="text" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
+            </form>
+            <form action="https://www.bing.com/search" target="_blank" method="get">
+                <input id="bing" type="hidden" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
+            </form>
+            <form action="https://www.baidu.com/s" target="_blank" method="get">
+                <input id="baidu" type="hidden" class="search-input" name="wd" placeholder="你要baidu干点啥" autofocus>
+            </form>
+            <form action="https://www.petalsearch.com/search" target="_blank" method="get">
+                <input id="qetal" type="hidden" class="search-input" name="query" placeholder="你要qetal干点啥" autofocus>
+            </form>
+            <form action="https://www.sogou.com/web" target="_blank" method="get">
+                <input id="sogou" type="hidden" class="search-input" name="query" placeholder="你要sogou干点啥" autofocus>
+            </form>
+        </div>
     </div>
 
-    <div id="hangs">
-        <button class="hang" onclick="window.open('https://www.bilibili.com/')">b站</button>
-        <button class="hang" onclick="window.open('https://www.douyin.com/')">抖音</button>
-        <button class="hang" onclick="window.open('https://www.huya.com/lpl')">lpl</button>
-        <button class="hang" onclick="window.open('https://www.bing.com/')">bing</button>
-        <button class="hang" onclick="window.open('https://mail.qq.com/')">qq邮箱</button>
-        <button class="hang" onclick="window.open('https://mail.google.com/')">gmail</button>
-        <button class="hang" onclick="window.open('https://zhaopin.sgcc.com.cn/')">国网招聘</button>
-        <button class="hang" onclick="window.open('https://www.runoob.com/')">菜鸟</button>
-        <button class="hang" onclick="window.open('https://uiverse.io/')">css设计</button>
-        <button class="hang" onclick="window.open('https://www.ketangpai.com/')">课堂派</button>
-        <button class="hang" onclick="window.open('https://snapdrop.net/')">文件传输</button>
-        <button class="hang" onclick="window.open('https://www.zhihu.com/')">知乎</button>
-        <button class="hang" onclick="window.open('https://www.cnki.net/')">知网</button>
-        <button class="hang" onclick="window.open('https://fanyi.baidu.com/')">百度翻译</button>
-        <button class="hang" onclick="window.open('https://jwxt.ncepu.edu.cn/jsxsd/')">学生服务平台</button>
-        <button class="hang" onclick="window.open('https://www.google.com/')">google</button>
-        <button class="hang" onclick="window.open('https://books.google.com/')">google图书</button>
-        <button class="hang" onclick="window.open('https://chat.openai.com')">chat</button>
-        <button class="hang" onclick="window.open('https://cv2.work/')">vpn</button>
-        <button class="hang" onclick="window.open('https://sms-activate.org/')">sms</button>
-        <button class="hang" onclick="window.open('https://www.ilovepdf.com/')">文档转换</button>
-        <button class="hang" onclick="window.open('https://vscode.dev/')">vscode</button>
-        <button class="hang" onclick="window.open('https://www.svgbackgrounds.com/')">css背景</button>
-        <button class="hang" onclick="window.open('https://www.leancloud.cn/')">后端云</button>
-        <button class="hang" onclick="window.open('https://www.notion.so/')">notion ai</button>
-        <button class="hang" onclick="window.open('https://mail.163.com/')">163</button>
+    <div id="bush-webs">
+        <div id="hangs">
+            <button class="hang" onclick="window.open('https://www.bilibili.com/')">b站</button>
+            <button class="hang" onclick="window.open('https://www.douyin.com/')">抖音</button>
+            <button class="hang" onclick="window.open('https://www.huya.com/lpl')">lpl</button>
+            <button class="hang" onclick="window.open('https://www.bing.com/')">bing</button>
+            <button class="hang" onclick="window.open('https://mail.qq.com/')">qq邮箱</button>
+            <button class="hang" onclick="window.open('https://mail.google.com/')">gmail</button>
+            <button class="hang" onclick="window.open('https://zhaopin.sgcc.com.cn/')">国网招聘</button>
+            <button class="hang" onclick="window.open('https://www.runoob.com/')">菜鸟</button>
+            <button class="hang" onclick="window.open('https://uiverse.io/')">css设计</button>
+            <button class="hang" onclick="window.open('https://www.ketangpai.com/')">课堂派</button>
+            <button class="hang" onclick="window.open('https://snapdrop.net/')">文件传输</button>
+            <button class="hang" onclick="window.open('https://www.zhihu.com/')">知乎</button>
+            <button class="hang" onclick="window.open('https://www.cnki.net/')">知网</button>
+            <button class="hang" onclick="window.open('https://fanyi.baidu.com/')">百度翻译</button>
+            <button class="hang" onclick="window.open('https://jwxt.ncepu.edu.cn/jsxsd/')">学生服务平台</button>
+            <button class="hang" onclick="window.open('https://www.google.com/')">google</button>
+            <button class="hang" onclick="window.open('https://books.google.com/')">google图书</button>
+            <button class="hang" onclick="window.open('https://chat.openai.com')">chat</button>
+            <button class="hang" onclick="window.open('https://cv2.work/')">vpn</button>
+            <button class="hang" onclick="window.open('https://sms-activate.org/')">sms</button>
+            <button class="hang" onclick="window.open('https://www.ilovepdf.com/')">文档转换</button>
+            <button class="hang" onclick="window.open('https://vscode.dev/')">vscode</button>
+            <button class="hang" onclick="window.open('https://www.svgbackgrounds.com/')">css背景</button>
+            <button class="hang" onclick="window.open('https://www.leancloud.cn/')">后端云</button>
+            <button class="hang" onclick="window.open('https://www.notion.so/')">notion ai</button>
+            <button class="hang" onclick="window.open('https://mail.163.com/')">163</button>
+        </div>
     </div>
-    <div id="practice">
-        <button id="choucha" onclick="choucha()">抽查</button>
-        <div id="x">0</div>
-        <div id="neirong">
-            <p id="dingyi">三角形具有稳定性</p>
+    <div id="bush-practice">
+        <div id="practice">
+            <button id="choucha" onclick="choucha()">抽查</button>
+            <!-- 用于记录抽查的问题还是答案 -->
+            <div id="x">0</div>
+            <div id="neirong">
+                <p id="dingyi">三角形具有稳定性</p>
+            </div>
         </div>
     </div>
     <p id="foot">

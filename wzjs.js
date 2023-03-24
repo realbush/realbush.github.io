@@ -1,77 +1,119 @@
-//可修改搜索引擎
-var g = document.getElementById("google")
-var d = document.getElementById("baidu")
-var b = document.getElementById("bing")
-var q = document.getElementById("qetal")
-var s = document.getElementById("sogou")
 
-/*
+/*leancloud
 AV.init({
     appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
     appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
     serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
 });*/
+// 搜索引擎
 function SE() {
-    var x = document.getElementById("Search-Engines").value;
+  var g = document.getElementById("google")
+  var d = document.getElementById("baidu")
+  var b = document.getElementById("bing")
+  var q = document.getElementById("qetal")
+  var s = document.getElementById("sogou")
+  var x = document.getElementById("Search-Engines").value;
 
-    if (x == "google") {
-        b.type = "hidden";
-        g.type = "text";
-        d.type = "hidden";
-        q.type = "hidden";
-        s.type = "hidden";
-    }
-    else if (x == "baidu") {
-        b.type = "hidden";
-        g.type = "hidden";
-        d.type = "text";
-        q.type = "hidden";
-        s.type = "hidden";
-    }
-    else if (x == "bing") {
-        b.type = "text";
-        g.type = "hidden";
-        d.type = "hidden";
-        q.type = "hidden";
-        s.type = "hidden";
-    }
-    else if (x == "qetal") {
-        b.type = "hidden";
-        g.type = "hidden";
-        d.type = "hidden";
-        q.type = "text";
-        s.type = "hidden";
-    }
-    else {
-        b.type = "hidden";
-        g.type = "hidden";
-        d.type = "hidden";
-        q.type = "hidden";
-        s.type = "text";
-    }
+  if (x == "google") {
+    b.type = "hidden";
+    g.type = "text";
+    d.type = "hidden";
+    q.type = "hidden";
+    s.type = "hidden";
+  }
+  else if (x == "baidu") {
+    b.type = "hidden";
+    g.type = "hidden";
+    d.type = "text";
+    q.type = "hidden";
+    s.type = "hidden";
+  }
+  else if (x == "bing") {
+    b.type = "text";
+    g.type = "hidden";
+    d.type = "hidden";
+    q.type = "hidden";
+    s.type = "hidden";
+  }
+  else if (x == "qetal") {
+    b.type = "hidden";
+    g.type = "hidden";
+    d.type = "hidden";
+    q.type = "text";
+    s.type = "hidden";
+  }
+  else {
+    b.type = "hidden";
+    g.type = "hidden";
+    d.type = "hidden";
+    q.type = "hidden";
+    s.type = "text";
+  }
 }
 //时钟
 function shijian() {
-    var date = new Date();
-    var now = "";
-    now = date.toLocaleTimeString();
-    document.getElementById("time").innerHTML = now;
-    setTimeout("shijian()", 1000);
+  var date = new Date();
+  var now = "";
+  now = date.toLocaleTimeString();
+  document.getElementById("time").innerHTML = now;
+  setTimeout("shijian()", 1000);
 }
-
-
 //练习部分
-var xhr = new XMLHttpRequest();
-xhr.open('get', 'wz.json');
-xhr.send();
-xhr.onload = function () {
+function practice(params) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'wz.json');
+  xhr.send();
+  xhr.onload = function () {
     respond = this.responseText;
     keys = Object.keys(JSON.parse(respond));
     values = Object.values(JSON.parse(respond));
     console.log(JSON.parse(respond));
+  }
+}
+practice();
+function choucha() {
+  var x = document.getElementById("x").innerHTML;
+  if (x == 1) {
+    document.getElementById('x').innerHTML = 0;
+    document.getElementById('dingyi').innerHTML = "A:" + values[num];
+  }
+  else {
+    document.getElementById('x').innerHTML = 1;
+    num = Math.floor(Math.random() * keys.length);
+    document.getElementById('dingyi').innerHTML = "Q:" + keys[num];
+  }
 }
 
+function bush_massages_in(params) {
+  
+}
 
+function bush_massages_out(params) {
+  document.getElementById("massages_out").innerHTML="测试成功";
+}
+bush_massages_out();
+
+
+
+// 初始化 LeanCloud
+AV.init({
+  appId: 'YOUR_APP_ID',
+  appKey: 'YOUR_APP_KEY'
+});
+
+// 获取表
+var TestObject = AV.Object.extend('TestObject');
+
+// 查询数据
+var query = new AV.Query(TestObject);
+query.equalTo('key', 'value');
+query.find().then(function(results) {
+  // 处理查询结果
+  console.log(results);
+}).catch(function(error) {
+  // 处理错误
+  console.error(error);
+});
 
 /*
 var geshu;
@@ -83,18 +125,7 @@ query.count().then((count) => {
 });
 */
 
-function choucha() {
-    var x = document.getElementById("x").innerHTML;
-    if (x == 1) {
-        document.getElementById('x').innerHTML = 0;
-        document.getElementById('dingyi').innerHTML = "A:" + values[num];
-    }
-    else {
-        document.getElementById('x').innerHTML = 1;
-        num = Math.floor(Math.random() * keys.length);
-        document.getElementById('dingyi').innerHTML = "Q:" + keys[num];
-    }
-}
+
 
 /*
 //获取音视频
