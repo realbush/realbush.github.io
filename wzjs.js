@@ -7,12 +7,12 @@ AV.init({
 });*/
 // 搜索引擎
 function SE() {
-  var g = document.getElementById("google")
-  var d = document.getElementById("baidu")
-  var b = document.getElementById("bing")
-  var q = document.getElementById("qetal")
-  var s = document.getElementById("sogou")
-  var x = document.getElementById("Search-Engines").value;
+  const g = document.getElementById("google")
+  const d = document.getElementById("baidu")
+  const b = document.getElementById("bing")
+  const q = document.getElementById("qetal")
+  const s = document.getElementById("sogou")
+  const x = document.getElementById("Search-Engines").value;
 
   if (x == "google") {
     b.type = "hidden";
@@ -52,15 +52,15 @@ function SE() {
 }
 //时钟
 function shijian() {
-  var date = new Date();
-  var now = "";
+  const date = new Date();
+  let now = "";
   now = date.toLocaleTimeString();
   document.getElementById("time").innerHTML = now;
   setTimeout("shijian()", 1000);
 }
 //练习部分
 function practice(params) {
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.open('get', 'wz.json');
   xhr.send();
   xhr.onload = function () {
@@ -72,7 +72,7 @@ function practice(params) {
 }
 practice();
 function choucha() {
-  var x = document.getElementById("x").innerHTML;
+  const x = document.getElementById("x").innerHTML;
   if (x == 1) {
     document.getElementById('x').innerHTML = 0;
     document.getElementById('dingyi').innerHTML = "A:" + values[num];
@@ -84,16 +84,50 @@ function choucha() {
   }
 }
 
-function bush_massages_in(params) {
-  
-}
 
+
+function bush_massages_in(params) {
+ // 初始化 SDK
+ AV.init({
+  appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
+  appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
+  serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
+});
+
+// 创建一个文本对象
+const TextObject = AV.Object.extend('days');
+const textObject = new TextObject();
+  const IN = document.getElementById('in');
+  IN.addEventListener('keydown', function (event) {
+    if (event.key == 'Enter' && !event.shiftKey) {
+      event.preventDefault(); // 阻止回车键默认行为
+      const text = IN.value;
+      if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
+        // 执行上传操作
+        textObject.set('content', text);
+        textObject.save().then((object) => {
+          console.log('上传成功：' + object.id);
+        }).catch((error) => {
+          console.log('上传失败：' + error);
+        });
+        IN.value = ''; // 清空文本框
+      }
+    }
+  });
+  textObject.set('content', 'text');
+}
+bush_massages_in();
 function bush_massages_out(params) {
-  document.getElementById("massages_out").innerHTML="测试成功";
+  document.getElementById("massages_out").innerHTML = "测试成功";
 }
 bush_massages_out();
 
 
+
+
+
+
+/*
 
 // 初始化 LeanCloud
 AV.init({
@@ -114,6 +148,8 @@ query.find().then(function(results) {
   // 处理错误
   console.error(error);
 });
+
+
 
 /*
 var geshu;
@@ -202,4 +238,9 @@ class UtilService {
 }
 
 module.exports = UtilService;
+
+
+var全局可变变量
+let块级可变变量
+const块级不变变量
 */
