@@ -1,10 +1,10 @@
 
-/*leancloud
+//leancloud
 AV.init({
     appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
     appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
     serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
-});*/
+});
 // 搜索引擎
 function SE() {
   const g = document.getElementById("google")
@@ -87,12 +87,6 @@ function choucha() {
 
 
 function bush_massages_in(params) {
- // 初始化 SDK
- AV.init({
-  appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
-  appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
-  serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
-});
 
 // 创建一个文本对象
 const TextObject = AV.Object.extend('days');
@@ -119,6 +113,9 @@ const textObject = new TextObject();
 bush_massages_in();
 function bush_massages_out(params) {
   document.getElementById("massages_out").innerHTML = "测试成功";
+
+
+
 }
 bush_massages_out();
 
