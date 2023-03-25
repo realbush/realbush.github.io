@@ -30,17 +30,17 @@
     <!-- 搜索栏 -->
     <div id="bush-searchs">
             <select id="Search-Engines" onchange="SE()">
-                <option value="google">google</option>
                 <option value="bing">bing</option>
+                <option value="google">google</option>
                 <option value="baidu">baidu</option>
                 <option value="qetal">qetal</option>
                 <option value="sogou">sogou</option>
             </select>
             <form action="https://www.google.com/search" target="_blank" method="get">
-                <input id="google" type="text" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
+                <input id="google" type="hidden" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
             </form>
             <form action="https://www.bing.com/search" target="_blank" method="get">
-                <input id="bing" type="hidden" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
+                <input id="bing" type="text" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
             </form>
             <form action="https://www.baidu.com/s" target="_blank" method="get">
                 <input id="baidu" type="hidden" class="search-input" name="wd" placeholder="你要baidu干点啥" autofocus>

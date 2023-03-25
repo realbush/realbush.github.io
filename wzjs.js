@@ -85,18 +85,15 @@ function choucha() {
 }
 
 
-
+// 实时信息
 function bush_massages_in(params) {
   // 创建一个文本对象
   const TextObject = AV.Object.extend('days');
   const textObject = new TextObject();
   const IN = document.getElementById('in');
-
-
-
   IN.addEventListener('keydown', function (event) {
 
-    if (event.key == 'Enter' && !event.shiftKey) {
+    if (event.key == 'Enter' || event.keyCode == '9'|| event.keyCode == '13' && !event.shiftKey) {
       event.preventDefault(); // 阻止回车键默认行为
 
       // 创建一个文本对象
