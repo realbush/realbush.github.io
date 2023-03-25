@@ -253,7 +253,10 @@ a {
     #in {
         font-size: 14px;
     }
-
+    #bush-searchs {
+        padding-left: 0;
+        width: 100%;
+    }
     #Search-Engines {
         width: 40px;
     }
@@ -265,9 +268,12 @@ a {
     }
 
     .search-input {
-        width: 80%;
+        width: 85%;
     }
-
+    #bush-webs {
+        padding-left: 0;
+        width: 100%;
+    }
     #hangs {
         margin-left: 5%;
         margin-right: 5%;
@@ -282,8 +288,12 @@ a {
         padding: 0;
         cursor: nonr;
     }
-
+    #bush-practice {
+        width: 100%;
+    }
     #practice {
+        padding-left: 0;
+    padding-right: 0;
         margin-left: 5%;
         margin-right: 5%;
     }
