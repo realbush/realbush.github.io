@@ -263,8 +263,8 @@ a {
 
     #search {
         padding-top: 2%;
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 2%;
+        padding-right: 2%;
     }
 
     .search-input {
@@ -283,7 +283,7 @@ a {
     .hang {
         font-size: 10px;
         margin: 1%;
-        width: 22%;
+        width: 20%;
         height: 30px;
         padding: 0;
         cursor: nonr;
