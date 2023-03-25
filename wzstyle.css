@@ -10,7 +10,7 @@ body {
 }
 
 #foot {
-    position: absolute;
+    position: fixed;
     margin: 0;
     bottom: 0;
     right: 0;
@@ -45,6 +45,7 @@ body {
 a {
     text-decoration: none;
 }
+
 /* 时间 */
 #time {
     width: 100%;
@@ -57,13 +58,13 @@ a {
 }
 
 /* 实时信息 */
-#massages{
+#massages {
     float: left;
     width: 20%;
     background-color: transparent;
 }
 
-#massages_out{
+#massages_out {
     margin: 2%;
     height: 450px;
     font-size: 12px;
@@ -72,7 +73,8 @@ a {
     background-color: transparent;
     box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
 }
-#massages_in{
+
+#massages_in {
     margin: 2%;
     height: 50px;
     border-radius: 10px;
@@ -80,7 +82,7 @@ a {
     box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
 }
 
-#in{
+#in {
     background-color: transparent;
     height: 100%;
     width: 100%;
@@ -89,7 +91,7 @@ a {
     font-size: 17px;
 }
 
-#bush-searchs{
+#bush-searchs {
     padding-left: 2%;
     float: left;
     background-color: transparent;
@@ -127,12 +129,13 @@ a {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
-#bush-webs{
+#bush-webs {
     padding-left: 2%;
     float: left;
     width: 77%;
     background-color: transparent;
 }
+
 #hangs {
     padding-right: 10%;
 }
@@ -157,11 +160,13 @@ a {
 #Search-Engines:hover {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
-#bush-practice{
-float: left;
-width: 80%;
-background-color: transparent;
+
+#bush-practice {
+    float: left;
+    width: 80%;
+    background-color: transparent;
 }
+
 #practice {
     padding-left: 1%;
     padding-right: 10%;
@@ -201,6 +206,7 @@ background-color: transparent;
     padding: 2%;
     font-size: 20px;
 }
+
 /* 用于记录抽查的问题还是答案 */
 #x {
     display: none;
@@ -226,6 +232,26 @@ background-color: transparent;
 
     #time {
         display: none;
+    }
+
+    #massages {
+        padding-left: 5%;
+        padding-right: 5%;
+        width: 90%;
+    }
+
+    #massages_out {
+        height: 100px;
+        border-radius: 10px;
+    }
+
+    #massages_in {
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    #in {
+        font-size: 14px;
     }
 
     #Search-Engines {
