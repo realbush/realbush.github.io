@@ -90,9 +90,10 @@ a {
 }
 
 #bush-searchs{
+    padding-left: 2%;
     float: left;
     background-color: transparent;
-    width: 80%;
+    width: 77%;
 }
 
 #Search-Engines {
@@ -127,8 +128,9 @@ a {
 }
 
 #bush-webs{
+    padding-left: 2%;
     float: left;
-    width: 80%;
+    width: 77%;
     background-color: transparent;
 }
 #hangs {
@@ -161,7 +163,7 @@ width: 80%;
 background-color: transparent;
 }
 #practice {
-    padding-left: 5%;
+    padding-left: 1%;
     padding-right: 10%;
     text-align: right;
 }
