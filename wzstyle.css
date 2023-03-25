@@ -90,14 +90,13 @@ a {
     border: 0;
     font-size: 17px;
 }
-
+/* 搜索框 */
 #bush-searchs {
     padding-left: 2%;
     float: left;
     background-color: transparent;
     width: 77%;
 }
-
 #Search-Engines {
     background-color: transparent;
     cursor: pointer;
@@ -107,12 +106,11 @@ a {
     font-size: 16px;
     font-family: "Microsoft YaHei";
     outline: none;
-    margin-bottom: 20px;
     border-width: 1px;
     border-radius: 20px;
     box-shadow: 1px 1px 1px rgb(0, 0, 0);
     appearance: none;
-    padding: 5px;
+
 }
 
 .search-input {
@@ -122,13 +120,12 @@ a {
     width: 500px;
     height: 40px;
     outline: none;
-    margin-bottom: 20px;
     border-width: 1px;
     border-radius: 20px;
     padding-inline-start: 16px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
-
+/* 网站 */
 #bush-webs {
     padding-left: 2%;
     float: left;
@@ -160,7 +157,7 @@ a {
 #Search-Engines:hover {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
-
+/* 练习部分 */
 #bush-practice {
     float: left;
     width: 80%;
@@ -230,10 +227,12 @@ a {
         padding: 5px;
     }
 
+    /* 时间 */
     #time {
         display: none;
     }
 
+    /* 实时信息 */
     #massages {
         padding-left: 5%;
         padding-right: 5%;
@@ -253,57 +252,67 @@ a {
     #in {
         font-size: 14px;
     }
+
+    /* 搜索框 */
     #bush-searchs {
         padding-left: 0;
         width: 100%;
     }
-    #Search-Engines {
-        width: 40px;
-    }
 
-    #search {
-        padding-top: 2%;
-        padding-left: 2%;
-        padding-right: 2%;
+    #Search-Engines {
+        width: 10%;
     }
 
     .search-input {
-        width: 85%;
+        width: 80%;
     }
+
+    /* 网站 */
     #bush-webs {
         padding-left: 0;
         width: 100%;
     }
+
     #hangs {
-        margin-left: 5%;
-        margin-right: 5%;
-        text-shadow: 2px 3px 4px #a8a8a8;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-right: 0;
+
     }
 
     .hang {
         font-size: 10px;
         margin: 1%;
-        width: 20%;
+        width: 22%;
         height: 30px;
         padding: 0;
         cursor: nonr;
     }
+
+    /* 练习部分 */
     #bush-practice {
         width: 100%;
     }
+
     #practice {
         padding-left: 0;
-    padding-right: 0;
+        padding-right: 0;
         margin-left: 5%;
         margin-right: 5%;
     }
+
     #choucha {
-    font-size: 14px;
+        font-size: 14px;
+        width: 50px;
+        height: 30px;
     }
-#dingyi {
-    background-color: transparent;
-    text-align: center;
-    padding: 2%;
-    font-size: 14px;
+#neirong{
+    height: 80px;
 }
+    #dingyi {
+        background-color: transparent;
+        text-align: center;
+        padding: 2%;
+        font-size: 14px;
+    }
 }
