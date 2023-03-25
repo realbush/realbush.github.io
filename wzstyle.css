@@ -90,6 +90,7 @@ a {
     border: 0;
     font-size: 17px;
 }
+
 /* 搜索框 */
 #bush-searchs {
     padding-left: 2%;
@@ -97,6 +98,7 @@ a {
     background-color: transparent;
     width: 77%;
 }
+
 #Search-Engines {
     background-color: transparent;
     cursor: pointer;
@@ -110,7 +112,7 @@ a {
     border-radius: 20px;
     box-shadow: 1px 1px 1px rgb(0, 0, 0);
     appearance: none;
-
+    margin-bottom: 20px;
 }
 
 .search-input {
@@ -125,6 +127,7 @@ a {
     padding-inline-start: 16px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
+
 /* 网站 */
 #bush-webs {
     padding-left: 2%;
@@ -157,6 +160,7 @@ a {
 #Search-Engines:hover {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
+
 /* 练习部分 */
 #bush-practice {
     float: left;
@@ -255,16 +259,16 @@ a {
 
     /* 搜索框 */
     #bush-searchs {
-        padding-left: 0;
         width: 100%;
     }
 
     #Search-Engines {
-        width: 10%;
+        width: 15%;
+        margin-bottom: 2px;
     }
 
     .search-input {
-        width: 80%;
+        width: 75%;
     }
 
     /* 网站 */
@@ -306,9 +310,11 @@ a {
         width: 50px;
         height: 30px;
     }
-#neirong{
-    height: 80px;
-}
+
+    #neirong {
+        height: 80px;
+    }
+
     #dingyi {
         background-color: transparent;
         text-align: center;
