@@ -1,9 +1,9 @@
 
 //leancloud
 AV.init({
-    appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
-    appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
-    serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
+  appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
+  appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
+  serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
 });
 // 搜索引擎
 function SE() {
@@ -51,6 +51,7 @@ function SE() {
   }
 }
 //时钟
+
 function shijian() {
   const date = new Date();
   let now = "";
@@ -87,10 +88,11 @@ function choucha() {
 
 
 function bush_massages_in(params) {
+  const date = new Date();
 
-// 创建一个文本对象
-const TextObject = AV.Object.extend('days');
-const textObject = new TextObject();
+  // 创建一个文本对象
+  const TextObject = AV.Object.extend('days');
+  const textObject = new TextObject();
   const IN = document.getElementById('in');
   IN.addEventListener('keydown', function (event) {
     if (event.key == 'Enter' && !event.shiftKey) {
@@ -98,24 +100,31 @@ const textObject = new TextObject();
       const text = IN.value;
       if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
         // 执行上传操作
-        textObject.set('content', text);
+        const value = date.getMonth() + 1 + '.' + date.getDate()+ '/' + date.getHours()+':'+date.getMinutes() + text;
+        textObject.set('value',value);
         textObject.save().then((object) => {
-          console.log('上传成功：' + object.id);
+          console.log('上传成功：' + value);
         }).catch((error) => {
           console.log('上传失败：' + error);
         });
         IN.value = ''; // 清空文本框
+        setTimeout('bush_massages_out()', 200);
       }
     }
   });
-  textObject.set('content', 'text');
 }
+
 bush_massages_in();
+
 function bush_massages_out(params) {
-  document.getElementById("massages_out").innerHTML = "测试成功";
-
-
-
+  document.getElementById("massages_out").innerHTML = "BUSH";
+  const query = new AV.Query('days');
+  query.find().then(results => {
+    results.forEach(record => {
+      document.getElementById("massages_out").innerHTML += "<br>";
+      document.getElementById("massages_out").innerHTML += record.get('value');
+    })
+  })
 }
 bush_massages_out();
 

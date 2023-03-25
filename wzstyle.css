@@ -66,6 +66,7 @@ a {
 #massages_out{
     margin: 2%;
     height: 450px;
+    font-size: 12px;
     border-radius: 20px;
     padding: 10px;
     background-color: transparent;
