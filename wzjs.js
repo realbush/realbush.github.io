@@ -68,7 +68,6 @@ function practice(params) {
     respond = this.responseText;
     keys = Object.keys(JSON.parse(respond));
     values = Object.values(JSON.parse(respond));
-    console.log(JSON.parse(respond));
   }
 }
 practice();
@@ -88,32 +87,51 @@ function choucha() {
 
 
 function bush_massages_in(params) {
-  const date = new Date();
-
   // 创建一个文本对象
   const TextObject = AV.Object.extend('days');
   const textObject = new TextObject();
   const IN = document.getElementById('in');
+
+
+
   IN.addEventListener('keydown', function (event) {
+
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault(); // 阻止回车键默认行为
+
+      // 创建一个文本对象
+      const TextObject = AV.Object.extend('days');
+      const textObject = new TextObject();
+      const IN = document.getElementById('in');
+      const date = new Date();
       const text = IN.value;
-      if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
-        // 执行上传操作
-        const value = date.getMonth() + 1 + '.' + date.getDate()+ '/' + date.getHours()+':'+date.getMinutes() + text;
-        textObject.set('value',value);
-        textObject.save().then((object) => {
-          console.log('上传成功：' + value);
-        }).catch((error) => {
-          console.log('上传失败：' + error);
-        });
-        IN.value = ''; // 清空文本框
-        setTimeout('bush_massages_out()', 200);
+      if (text.charAt(0) == '-') {
+        //检测到'-'开头执行删除操作
+        const query = new AV.Query('days');
+        query.equalTo('value', text.slice(1));
+        query.first().then((object) => {
+          object.destroy().then(() => {
+            //then等待destroy执行完成后执行下面
+            IN.value = ''; // 清空文本框
+            bush_massages_out();
+          });
+        })
+      }
+      else {
+        if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
+          // 执行上传操作
+          const value = date.getMonth() + 1 + '.' + date.getDate() + '/' + date.getHours() + ':' + date.getMinutes() + text;
+          textObject.set('value', value);
+          textObject.save().then(() => {
+            //then等待save执行完成后执行下面
+            IN.value = ''; // 清空文本框
+            bush_massages_out();
+          });
+        }
       }
     }
   });
 }
-
 bush_massages_in();
 
 function bush_massages_out(params) {
