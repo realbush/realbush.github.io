@@ -246,7 +246,7 @@ function userstate(params) {
     document.getElementById('user').innerHTML = username;
     bush_massages_out(username);
     bush_massages_in(username);
-    update(username);
+    setTimeout(function () { update() }, 5000);
   }
 }
 userstate();
