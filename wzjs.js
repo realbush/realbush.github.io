@@ -101,6 +101,7 @@ function bush_massages_in(username) {
       const IN = document.getElementById('in');
       const date = new Date();
       const text = IN.value;
+      //删除信息
       if (text.charAt(0) == '-') {
         //检测到'-'开头执行删除操作
         const query = new AV.Query(username);
@@ -110,8 +111,8 @@ function bush_massages_in(username) {
           query.first().then((object) => {
             // JSON.parse()将JSON信息解析成JavaScript对象
             // JSON.stringify() 方法将 JavaScript 对象转换为 JSON 字符串
+            alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
             object.destroy().then(function () { //then等待destroy执行完成后执行下面
-              alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
               IN.value = ''; // 清空文本框
               bush_massages_out(username);
             }).catch(function (error) {
@@ -119,13 +120,13 @@ function bush_massages_in(username) {
             });
           })
         }
+        // 有删除内容时执行删除内容对应的项
         else {
-          // 有删除内容时执行删除内容对应的项
           query.equalTo('value', text.slice(1));
           query.first().then((object) => {
             if (object) {
+              alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
               object.destroy().then(function () { //then等待destroy执行完成后执行下面
-                alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
                 IN.value = ''; // 清空文本框
                 bush_massages_out(username);
               }).catch(function (error) {
@@ -139,6 +140,7 @@ function bush_massages_in(username) {
           })
         }
       }
+      // 上传信息
       else {
         if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
           // 执行上传操作
@@ -168,7 +170,7 @@ function bush_massages_out(username) {
       document.getElementById("massages_out").innerHTML += record.get('value');
     })
   })
-  query.count().then((object)=>{
+  query.count().then((object) => {
     resultcount = object;
   })
 }
@@ -184,9 +186,9 @@ function closelogin() {
 }
 
 function login() {
-  const username =document.getElementById('username-in').value;
+  const username = document.getElementById('username-in').value;
   const password = document.getElementById('password-in').value;
-  AV.User.logIn(username,password).then(function (user) {
+  AV.User.logIn(username, password).then(function (user) {
     localStorage.setItem('sessionToken', user.getSessionToken());// 保存登录信息
     closelogin();
     userstate();
@@ -262,16 +264,16 @@ function state(params) {
 }
 state();
 
-
+// 实时更新(每一秒更新一次)
 function update(username) {
   const query = new AV.Query(username);
-  query.count().then((object)=>{
-    if(object != resultcount){
+  query.count().then((object) => {
+    if (object != resultcount) {
       bush_massages_out(username);
       resultcount = object;
     }
   })
-  setTimeout(function(){update(username)}, 1000);
+  setTimeout(function () { update(username) }, 1000);
 }
 
 // 将class和之前做对比
