@@ -173,6 +173,7 @@ function bush_massages_out(username) {
   query.count().then((object) => {
     resultcount = object;
   })
+  
 }
 
 
@@ -244,14 +245,13 @@ function userstate(params) {
     document.getElementById('signup-button').style.display = 'none';
     document.getElementById('signout-button').style.display = 'block';
     document.getElementById('user').innerHTML = username;
-    bush_massages_out(username).then(()=>{
-      update(username);
-    });
+    bush_massages_out(username);
     bush_massages_in(username);
+    setTimeout(function () { update() }, 5000);
   }
 }
+state();
 userstate();
-
 // 检测用户登录状态
 function state(params) {
   var sessionToken = localStorage.getItem('sessionToken');
@@ -263,10 +263,12 @@ function state(params) {
     });
   }
 }
-state();
+
 
 // 实时更新(每一秒更新一次)
-function update(username) {
+function update() {
+  const currentUser = AV.User.current();
+  const username = currentUser.get('username');
   const query = new AV.Query(username);
   query.count().then((object) => {
     if (object != resultcount) {
@@ -274,7 +276,7 @@ function update(username) {
       resultcount = object;
     }
   })
-  setTimeout(function () { update(username) }, 1000);
+  setTimeout(function () { update() }, 1000);
 }
 
 // 将class和之前做对比
