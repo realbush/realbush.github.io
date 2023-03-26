@@ -33,14 +33,10 @@
             <span class="close" onclick="closelogin()">&times;</span>
             <!-- 登录表格 -->
             <form>
-                <label for="username">用户名:</label>
-
-                <input type="text" id="username-in" name="username" placeholder="username"><br>
-
-                <label for="password">密码:</label>
-                <input type="password" id="password-in" name="password" placeholder="password"><br>
-
-                <button type="button" onclick="login()">登录</button>
+                <p class="heading">Login</p>
+                <input type="text" class="in-up" id='username-in' name="username" placeholder="username"><br>
+                <input type="password" class="in-up"id='password-in' name="password" placeholder="password"><br>
+                <button type="button" class="in-up-button" onclick="login()">Login</button>
             </form>
         </div>
     </div>
@@ -50,13 +46,10 @@
             <span class="close" onclick="closesignup()">&times;</span>
             <!-- 注册表格 -->
             <form>
-                <label for="username">用户名:</label>
-                <input type="text" id="username-up" name="username" placeholder="username"><br>
-
-                <label for="password">密码:</label>
-                <input type="password" id="password-up" name="password" placeholder="password"><br>
-
-                <button type="button" onclick="signup()">注册</button>
+                <p class="heading">Sign up</p>
+                <input type="text" class="in-up"id="username-up" name="username" placeholder="username"><br>
+                <input type="password" class="in-up"id="password-up" name="password" placeholder="password"><br>
+                <button type="button" class="in-up-button" onclick="signup()">Sign up</button>
             </form>
         </div>
     </div>

@@ -87,28 +87,60 @@ a {
 }
 
 .modal-content {
+    position: relative;
     background-color: #2a2b38;
     margin: 10% auto;
-    padding: 1.9rem 1.2rem;
+    padding:0 1.2rem 1.2rem 1.2rem;
     border: 1px solid #bcbcbc;
     width: 190px;
-    border-radius: 25px;
+    border-radius: 10px;
     color: white;
+    text-align: center;
 }
 
-#username-in {
-    background: none;
+.heading {
+    padding: 0.5em 0 0.8em 0;
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.in-up {
+    display: flex;
+    border-radius: 25px;
+    padding: 0.6em;
     border: none;
     outline: none;
-    width: 100%;
-    color: #d3d3d3;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
 }
 
+.in-up-button {
+    width: auto;
+    height: 2.5em;
+    padding: 0.5em;
+    padding-left: 1.1em;
+    padding-right: 1.1em;
+    border-radius: 5px;
+    border: none;
+    background-color: #252525;
+    color: white;
+    cursor: pointer;
+
+}
+
+.in-up-button:hover {
+    background-color: black;
+  }
+
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    position: absolute;
+    right: 0.4em;
+    top: 0;
+    color: #aaaaaa57;
+    font-size: 25px;
 }
 
 .close:hover,
