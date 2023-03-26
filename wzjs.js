@@ -1,4 +1,4 @@
-
+var resultcount = 0;
 //leancloud
 AV.init({
   appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
@@ -157,6 +157,7 @@ function bush_massages_in(username) {
   });
 }
 //获取展示信息
+
 function bush_massages_out(username) {
   document.getElementById("massages_out").innerHTML = username;
   const query = new AV.Query(username);
@@ -166,6 +167,9 @@ function bush_massages_out(username) {
       document.getElementById("massages_out").innerHTML += record.get('time');
       document.getElementById("massages_out").innerHTML += record.get('value');
     })
+  })
+  query.count().then((object)=>{
+    resultcount = object;
   })
 }
 
@@ -180,7 +184,9 @@ function closelogin() {
 }
 
 function login() {
-  AV.User.logIn(document.getElementById('username-in').value, document.getElementById('password-in').value).then(function (user) {
+  const username =document.getElementById('username-in').value;
+  const password = document.getElementById('password-in').value;
+  AV.User.logIn(username,password).then(function (user) {
     localStorage.setItem('sessionToken', user.getSessionToken());// 保存登录信息
     closelogin();
     userstate();
@@ -198,6 +204,7 @@ function closesignup() {
 }
 
 function signup() {
+
   // 获取用户输入的注册信息
   const username = document.getElementById('username-up').value;
   const password = document.getElementById('password-up').value;
@@ -235,8 +242,9 @@ function userstate(params) {
     document.getElementById('signup-button').style.display = 'none';
     document.getElementById('signout-button').style.display = 'block';
     document.getElementById('user').innerHTML = username;
-    bush_massages_in(username);
     bush_massages_out(username);
+    bush_massages_in(username);
+    update(username);
   }
 }
 userstate();
@@ -253,6 +261,21 @@ function state(params) {
   }
 }
 state();
+
+
+function update(username) {
+  const query = new AV.Query(username);
+  query.count().then((object)=>{
+    if(object != resultcount){
+      bush_massages_out(username);
+      resultcount = object;
+    }
+  })
+  setTimeout(function(){update(username)}, 1000);
+}
+
+// 将class和之前做对比
+// 不同就更新
 /*
  
 // 初始化 LeanCloud
