@@ -87,25 +87,23 @@ function choucha() {
 
 // 实时信息
 // 上传信息
-function bush_massages_in(params) {
-  // 创建一个文本对象
-  const TextObject = AV.Object.extend('days');
+function bush_massages_in(username) {
+  const TextObject = AV.Object.extend(username);
   const textObject = new TextObject();
   const IN = document.getElementById('in');
   IN.addEventListener('keydown', function (event) {
 
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault(); // 阻止回车键默认行为
-
       // 创建一个文本对象
-      const TextObject = AV.Object.extend('days');
+      const TextObject = AV.Object.extend(username);
       const textObject = new TextObject();
       const IN = document.getElementById('in');
       const date = new Date();
       const text = IN.value;
       if (text.charAt(0) == '-') {
         //检测到'-'开头执行删除操作
-        const query = new AV.Query('days');
+        const query = new AV.Query(username);
         query.descending('createdAt');
         // 仅输入‘-’删除最后一项
         if (text.slice(1) == '') {
@@ -115,7 +113,7 @@ function bush_massages_in(params) {
             object.destroy().then(function () { //then等待destroy执行完成后执行下面
               alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
               IN.value = ''; // 清空文本框
-              bush_massages_out();
+              bush_massages_out(username);
             }).catch(function (error) {
               alert('删除失败: ' + error.message);
             });
@@ -129,7 +127,7 @@ function bush_massages_in(params) {
               object.destroy().then(function () { //then等待destroy执行完成后执行下面
                 alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
                 IN.value = ''; // 清空文本框
-                bush_massages_out();
+                bush_massages_out(username);
               }).catch(function (error) {
                 alert('删除失败: ' + error.message);
               });
@@ -151,18 +149,17 @@ function bush_massages_in(params) {
           textObject.save().then(() => {
             //then等待save执行完成后执行下面
             IN.value = ''; // 清空文本框
-            bush_massages_out();
+            bush_massages_out(username);
           });
         }
       }
     }
   });
 }
-bush_massages_in();
 //获取展示信息
-function bush_massages_out(params) {
-  document.getElementById("massages_out").innerHTML = "BUSH";
-  const query = new AV.Query('days');
+function bush_massages_out(username) {
+  document.getElementById("massages_out").innerHTML = username;
+  const query = new AV.Query(username);
   query.find().then(results => {
     results.forEach(record => {
       document.getElementById("massages_out").innerHTML += "<br>";
@@ -171,7 +168,6 @@ function bush_massages_out(params) {
     })
   })
 }
-bush_massages_out();
 
 
 // 登录系统
@@ -186,7 +182,7 @@ function closelogin() {
 function login() {
   AV.User.logIn(document.getElementById('username-in').value, document.getElementById('password-in').value).then(function (user) {
     closelogin();
-    alert('登录成功');
+    userstate();
   }).catch(function (error) {
     alert(error.message);
   });
@@ -202,32 +198,58 @@ function closesignup() {
 
 function signup() {
   // 获取用户输入的注册信息
-  var username = document.getElementById('username-up').value;
-  var password = document.getElementById('password-up').value;
-  var user = new AV.User();
+  const username = document.getElementById('username-up').value;
+  const password = document.getElementById('password-up').value;
+  const user = new AV.User();
   user.setUsername(username);
   user.setPassword(password);
   user.signUp().then(function (user) {
     closesignup();
-    alert('注册成功');
   }).catch(function (error) {
     alert(error.message);
   });
 }
 
+// 注销系统
+function signout() {
+  const currentUser = AV.User.current();
+  const username = currentUser.get('username');
+  alert(username+'即将滚蛋')
+  AV.User.logOut().then(() => {
+    // 成功退出登录
+    location.reload();
+  }, (error) => {
+    // 处理退出登录错误
+  });
+}
 
-
+// 检测登录状态
+function userstate(params) {
+  var currentUser = AV.User.current();
+  if (currentUser) {
+    // 根据用户角色查询某个数据表中的内容
+    const username = currentUser.get('username');
+    document.getElementById('user').style.display = 'block';
+    document.getElementById('login-button').style.display = 'none';
+    document.getElementById('signup-button').style.display = 'none';
+    document.getElementById('signout-button').style.display = 'block';
+    document.getElementById('user').innerHTML = username;
+    bush_massages_in(username);
+    bush_massages_out(username);
+  }
+}
+userstate();
 /*
-
+ 
 // 初始化 LeanCloud
 AV.init({
   appId: 'YOUR_APP_ID',
   appKey: 'YOUR_APP_KEY'
 });
-
+ 
 // 获取表
 var TestObject = AV.Object.extend('TestObject');
-
+ 
 // 查询数据
 var query = new AV.Query(TestObject);
 query.equalTo('key', 'value');
@@ -238,9 +260,9 @@ query.find().then(function(results) {
   // 处理错误
   console.error(error);
 });
-
-
-
+ 
+ 
+ 
 /*
 var geshu;
 var query = new AV.Query('bush');
@@ -263,22 +285,22 @@ navigator.mediaDevices.getUserMedia({audio: true, video: true})
   .catch(function(err) {
     console.log('获取本地音视频流失败：' + err);
   });
-
+ 
 /*
-
+ 
     var bingimage = new XMLHttpRequest();
     bi = bingimage.open('get', 'https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN');
     bingimage.send();
     xhr.onload = function (){
         respond = this.responseText;
         console.log(JSON.parse(respond));
-
+ 
     }
-
+ 
 /*
 var TestObject = AV.Object.extend('bush');
 var testObject = new TestObject();
-
+ 
 testObject.save({
     keys:'诺顿定理',
     values:'一个与外部电路无耦合关系的线性含源电阻性二段网络N，对外电路而言，可以用一个电流源和一个电导相串联'
@@ -291,13 +313,13 @@ testObject.save({
 const { Controller, Get, Redirect } = require('@nestjs/common');
 const UtilService = require('./utilService');
 const controllerPath = 'redirect_to_bing_daily_picture_address';
-
+ 
 @Controller()
 class BingDailyPictureController {
   constructor(utilService) {
     this.utilService = utilService;
   }
-
+ 
   // GET 请求重定向到必应每日图片地址
   @Get(controllerPath)
   // 使用 302 状态码进行重定向
@@ -307,13 +329,13 @@ class BingDailyPictureController {
     return { url: await this.utilService.getBingDailyPictureUrl() };
   }
 }
-
+ 
 module.exports = BingDailyPictureController;
-
+ 
 // utilService.js
 const axios = require('axios');
 const baseUrl = 'https://cn.bing.com';
-
+ 
 class UtilService {
   // 获取必应每日图片地址
   async getBingDailyPictureUrl() {
@@ -326,11 +348,11 @@ class UtilService {
     return `${baseUrl}${res.data.images[0].url}`;
   }
 }
-
+ 
 module.exports = UtilService;
-
-
-var全局可变变量
+ 
+ 
+var函数域可变变量
 let块级可变变量
 const块级不变变量
 */
