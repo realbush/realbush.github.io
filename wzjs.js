@@ -244,9 +244,10 @@ function userstate(params) {
     document.getElementById('signup-button').style.display = 'none';
     document.getElementById('signout-button').style.display = 'block';
     document.getElementById('user').innerHTML = username;
-    bush_massages_out(username);
+    bush_massages_out(username).then(()=>{
+      update(username);
+    });
     bush_massages_in(username);
-    update(username);
   }
 }
 userstate();
