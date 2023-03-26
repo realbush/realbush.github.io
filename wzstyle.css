@@ -47,13 +47,21 @@ a {
 }
 
 /* 登录注册系统 */
+#user{
+    position: absolute;
+    top: 0;
+    right: 100px;
+    text-shadow:none;
+    background-color: transparent;
+    border: none;
+    display: none;
+}
+
 #login-button {
     position: absolute;
     top: 10px;
     right: 30px;
-    text-align: center;
-    border-radius: 10px;
-    margin: 5px;
+
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -65,9 +73,7 @@ a {
     position: absolute;
     top: 10px;
     right: 90px;
-    text-align: center;
-    border-radius: 10px;
-    margin: 5px;
+
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -75,6 +81,18 @@ a {
     cursor: pointer;
 }
 
+#signout-button{
+    position: absolute;
+    top: 10px;
+    right: 30px;
+
+    width: 50px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
 .modal {
     display: none;
     position: fixed;
@@ -90,7 +108,7 @@ a {
     position: relative;
     background-color: #2a2b38;
     margin: 10% auto;
-    padding:0 1.2rem 1.2rem 1.2rem;
+    padding: 0 1.2rem 1.2rem 1.2rem;
     border: 1px solid #bcbcbc;
     width: 190px;
     border-radius: 10px;
@@ -133,7 +151,7 @@ a {
 
 .in-up-button:hover {
     background-color: black;
-  }
+}
 
 .close {
     position: absolute;
