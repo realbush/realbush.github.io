@@ -158,8 +158,8 @@ function bush_massages_in(username) {
     }
   });
 }
-//获取展示信息
 
+//获取展示信息
 function bush_massages_out(username) {
   document.getElementById("massages_out").innerHTML = username;
   const query = new AV.Query(username);
@@ -175,7 +175,6 @@ function bush_massages_out(username) {
   })
   
 }
-
 
 // 登录系统
 function openlogin() {
@@ -247,7 +246,8 @@ function userstate(params) {
     document.getElementById('user').innerHTML = username;
     bush_massages_out(username);
     bush_massages_in(username);
-    setTimeout(function () { update() }, 5000);
+    setTimeout(function(){ ToBottom()},200);
+    setTimeout(function () { update() }, 200);
   }
 }
 state();
@@ -273,12 +273,19 @@ function update() {
   query.count().then((object) => {
     if (object != resultcount) {
       bush_massages_out(username);
+      setTimeout(function(){ ToBottom()},200);
       resultcount = object;
     }
   })
   setTimeout(function () { update() }, 1000);
 }
 
+// 自动滚动到底部
+// 定义函数以滚动到底部
+function ToBottom() {
+  var messages = document.getElementById("massages_out");// 获取要滚动的元素
+  messages.scrollTop = messages.scrollHeight;
+}
 // 将class和之前做对比
 // 不同就更新
 /*
