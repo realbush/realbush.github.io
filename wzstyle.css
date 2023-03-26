@@ -46,6 +46,78 @@ a {
     text-decoration: none;
 }
 
+/* 登录注册系统 */
+#login-button {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 5px;
+    width: 50px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#signup-button {
+    position: absolute;
+    top: 10px;
+    right: 90px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 5px;
+    width: 50px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #2a2b38;
+    margin: 10% auto;
+    padding: 1.9rem 1.2rem;
+    border: 1px solid #bcbcbc;
+    width: 190px;
+    border-radius: 25px;
+    color: white;
+}
+
+#username-in {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* 时间 */
 #time {
     width: 100%;

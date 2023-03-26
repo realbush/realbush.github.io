@@ -86,6 +86,7 @@ function choucha() {
 
 
 // 实时信息
+// 上传信息
 function bush_massages_in(params) {
   // 创建一个文本对象
   const TextObject = AV.Object.extend('days');
@@ -158,7 +159,7 @@ function bush_massages_in(params) {
   });
 }
 bush_massages_in();
-
+//获取展示信息
 function bush_massages_out(params) {
   document.getElementById("massages_out").innerHTML = "BUSH";
   const query = new AV.Query('days');
@@ -173,7 +174,46 @@ function bush_massages_out(params) {
 bush_massages_out();
 
 
+// 登录系统
+function openlogin() {
+  document.getElementById('login-modal').style.display = 'block';
+}
 
+function closelogin() {
+  document.getElementById('login-modal').style.display = 'none';
+}
+
+function login() {
+  AV.User.logIn(document.getElementById('username-in').value, document.getElementById('password-in').value).then(function (user) {
+    closelogin();
+    alert('登录成功');
+  }).catch(function (error) {
+    alert(error.message);
+  });
+}
+// 注册系统
+function opensignup() {
+  document.getElementById('signup-modal').style.display = 'block';
+}
+
+function closesignup() {
+  document.getElementById('signup-modal').style.display = 'none';
+}
+
+function signup() {
+  // 获取用户输入的注册信息
+  var username = document.getElementById('username-up').value;
+  var password = document.getElementById('password-up').value;
+  var user = new AV.User();
+  user.setUsername(username);
+  user.setPassword(password);
+  user.signUp().then(function (user) {
+    closesignup();
+    alert('注册成功');
+  }).catch(function (error) {
+    alert(error.message);
+  });
+}
 
 
 

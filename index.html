@@ -16,10 +16,50 @@
         <div class="icon"></div>
         <div id="titletext">
             <a href="https://github.com/realbush/realbush.github.io" target="_blank">from BUSH</a>
+            <div class="container">
+                <button id="login-button" type="button" onclick="openlogin()">登录</button>
+            </div>
+            <div class="container">
+                <button id="signup-button" type="button" onclick="opensignup()">注册</button>
+            </div>
         </div>
     </div>
     <!-- 时间 -->
     <div id="time"></div>
+    <!-- 登录 -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <!-- 关闭登录弹窗、&times;表示一个x（关闭按钮） -->
+            <span class="close" onclick="closelogin()">&times;</span>
+            <!-- 登录表格 -->
+            <form>
+                <label for="username">用户名:</label>
+
+                <input type="text" id="username-in" name="username" placeholder="username"><br>
+
+                <label for="password">密码:</label>
+                <input type="password" id="password-in" name="password" placeholder="password"><br>
+
+                <button type="button" onclick="login()">登录</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <!-- 关闭注册弹窗、&times;表示一个x（关闭按钮） -->
+            <span class="close" onclick="closesignup()">&times;</span>
+            <!-- 注册表格 -->
+            <form>
+                <label for="username">用户名:</label>
+                <input type="text" id="username-up" name="username" placeholder="username"><br>
+
+                <label for="password">密码:</label>
+                <input type="password" id="password-up" name="password" placeholder="password"><br>
+
+                <button type="button" onclick="signup()">注册</button>
+            </form>
+        </div>
+    </div>
     <!-- 实时信息 -->
     <div id="massages">
         <div id="massages_out"></div>
@@ -29,28 +69,28 @@
     </div>
     <!-- 搜索栏 -->
     <div id="bush-searchs">
-            <select id="Search-Engines" onchange="SE()">
-                <option value="bing">bing</option>
-                <option value="google">google</option>
-                <option value="baidu">baidu</option>
-                <option value="qetal">qetal</option>
-                <option value="sogou">sogou</option>
-            </select>
-            <form action="https://www.google.com/search" target="_blank" method="get">
-                <input id="google" type="hidden" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
-            </form>
-            <form action="https://www.bing.com/search" target="_blank" method="get">
-                <input id="bing" type="text" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
-            </form>
-            <form action="https://www.baidu.com/s" target="_blank" method="get">
-                <input id="baidu" type="hidden" class="search-input" name="wd" placeholder="你要baidu干点啥" autofocus>
-            </form>
-            <form action="https://www.petalsearch.com/search" target="_blank" method="get">
-                <input id="qetal" type="hidden" class="search-input" name="query" placeholder="你要qetal干点啥" autofocus>
-            </form>
-            <form action="https://www.sogou.com/web" target="_blank" method="get">
-                <input id="sogou" type="hidden" class="search-input" name="query" placeholder="你要sogou干点啥" autofocus>
-            </form>
+        <select id="Search-Engines" onchange="SE()">
+            <option value="bing">bing</option>
+            <option value="google">google</option>
+            <option value="baidu">baidu</option>
+            <option value="qetal">qetal</option>
+            <option value="sogou">sogou</option>
+        </select>
+        <form action="https://www.google.com/search" target="_blank" method="get">
+            <input id="google" type="hidden" class="search-input" name="q" placeholder="你要google干点啥" autofocus>
+        </form>
+        <form action="https://www.bing.com/search" target="_blank" method="get">
+            <input id="bing" type="text" class="search-input" name="q" placeholder="你要bing干点啥" autofocus>
+        </form>
+        <form action="https://www.baidu.com/s" target="_blank" method="get">
+            <input id="baidu" type="hidden" class="search-input" name="wd" placeholder="你要baidu干点啥" autofocus>
+        </form>
+        <form action="https://www.petalsearch.com/search" target="_blank" method="get">
+            <input id="qetal" type="hidden" class="search-input" name="query" placeholder="你要qetal干点啥" autofocus>
+        </form>
+        <form action="https://www.sogou.com/web" target="_blank" method="get">
+            <input id="sogou" type="hidden" class="search-input" name="query" placeholder="你要sogou干点啥" autofocus>
+        </form>
     </div>
     <!-- 各种网站 -->
     <div id="bush-webs">
@@ -97,7 +137,7 @@
     <!-- 页脚 -->
     <p id="foot">
         <script>
-            document.write("width:" + screen.availWidth + "/version:1.2.3");
+            document.write("width:" + screen.availWidth + "/version:1.3.1");
         </script>
     </p>
     <script src="av-min.js"></script>
