@@ -198,6 +198,7 @@ function bush_massages_out(classname) {
     query.count().then((object) => {
       chatspacecount = object;
     })
+    setTimeout(function () { ToBottom() }, 200);
   }
   else {
     query.find().then(results => {
@@ -210,6 +211,7 @@ function bush_massages_out(classname) {
     query.count().then((object) => {
       userspacecount = object;
     })
+    setTimeout(function () { ToBottom() }, 200);
   }
   
 
@@ -265,6 +267,7 @@ function signout() {
   alert(username + '即将滚蛋')
   AV.User.logOut().then(() => {
     // 成功退出登录
+    localStorage.removeItem('sessionToken');
     location.reload();
   }, (error) => {
     // 处理退出登录错误
