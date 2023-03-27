@@ -61,7 +61,6 @@ a {
     position: absolute;
     top: 10px;
     right: 30px;
-
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -73,7 +72,6 @@ a {
     position: absolute;
     top: 10px;
     right: 90px;
-
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -85,7 +83,6 @@ a {
     position: absolute;
     top: 10px;
     right: 30px;
-
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -93,6 +90,31 @@ a {
     cursor: pointer;
     display: none;
 }
+#chatspace{
+    position: absolute;
+    top: 10px;
+    right: 200px;
+    width: 50px;
+    height: 35px;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+#userspace{
+    position: absolute;
+    top: 10px;
+    right: 200px;
+    width: 50px;
+    height: 35px;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -189,22 +211,23 @@ a {
 #massages_out {
     overflow-y:auto;
     margin: 2%;
-    height: 450px;
+    height: 400px;
     font-size: 12px;
     border-radius: 20px;
     padding: 10px;
     background-color: transparent;
     box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
 }
-
 /* 为什么滚动条直接消失了 */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 #massages_in {
+    float: left;
     margin: 2%;
     height: 50px;
+    width:96%;
     border-radius: 10px;
     background-color: transparent;
     box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
@@ -216,15 +239,19 @@ a {
     width: 100%;
     outline-style: none;
     border: 0;
-    font-size: 17px;
+    font-size: 14px;
 }
+
+
 
 /* 搜索框 */
 #bush-searchs {
     padding-left: 2%;
-    float: left;
+    display: flex;
+    
     background-color: transparent;
     width: 77%;
+    
 }
 
 #Search-Engines {
@@ -255,7 +282,17 @@ a {
     padding-inline-start: 16px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
-
+.search__button {
+    border: none;
+    background-color: #f4f2f2;
+    margin-top: .1em;
+  }
+  
+.search__icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: #b4b4b4;
+  }
 /* 网站 */
 #bush-webs {
     padding-left: 2%;
@@ -281,7 +318,7 @@ a {
     cursor: pointer;
 }
 
-.hang:hover {
+.hang:active {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
 

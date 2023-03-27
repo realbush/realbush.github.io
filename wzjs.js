@@ -1,4 +1,5 @@
-var resultcount = 0;
+var userspacecount = 0;
+var chatspacecount = 0;
 //leancloud
 AV.init({
   appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
@@ -87,8 +88,8 @@ function choucha() {
 
 // 实时信息
 // 上传信息
-function bush_massages_in(username) {
-  const TextObject = AV.Object.extend(username);
+function bush_massages_in(classname) {
+  const TextObject = AV.Object.extend(classname);
   const textObject = new TextObject();
   const IN = document.getElementById('in');
   IN.addEventListener('keydown', function (event) {
@@ -96,63 +97,84 @@ function bush_massages_in(username) {
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault(); // 阻止回车键默认行为
       // 创建一个文本对象
-      const TextObject = AV.Object.extend(username);
+      const TextObject = AV.Object.extend(classname);
       const textObject = new TextObject();
       const IN = document.getElementById('in');
       const date = new Date();
       const text = IN.value;
-      //删除信息
-      if (text.charAt(0) == '-') {
-        //检测到'-'开头执行删除操作
-        const query = new AV.Query(username);
-        query.descending('createdAt');
-        // 仅输入‘-’删除最后一项
-        if (text.slice(1) == '') {
-          query.first().then((object) => {
-            // JSON.parse()将JSON信息解析成JavaScript对象
-            // JSON.stringify() 方法将 JavaScript 对象转换为 JSON 字符串
-            alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
-            object.destroy().then(function () { //then等待destroy执行完成后执行下面
-              IN.value = ''; // 清空文本框
-              bush_massages_out(username);
-            }).catch(function (error) {
-              alert('删除失败: ' + error.message);
-            });
-          })
-        }
-        // 有删除内容时执行删除内容对应的项
-        else {
-          query.equalTo('value', text.slice(1));
-          query.first().then((object) => {
-            if (object) {
-              alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
-              object.destroy().then(function () { //then等待destroy执行完成后执行下面
-                IN.value = ''; // 清空文本框
-                bush_massages_out(username);
-              }).catch(function (error) {
-                alert('删除失败: ' + error.message);
-              });
-            }
-            else {
-              alert('未找到');
-              IN.value = ''; // 清空文本框
-            }
-          })
-        }
-      }
-      // 上传信息
-      else {
+      if (classname == 'chatspace') {
+        // 聊天室只能上传消息
         if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
           // 执行上传操作
+          const currentUser = AV.User.current();
+          const name = currentUser.get('username');
           const value = text;
           const time = date.getMonth() + 1 + '.' + date.getDate() + '/' + date.getHours() + ':' + date.getMinutes();
           textObject.set('time', time);
           textObject.set('value', value);
+          textObject.set('name', name);
           textObject.save().then(() => {
             //then等待save执行完成后执行下面
             IN.value = ''; // 清空文本框
-            bush_massages_out(username);
+            bush_massages_out(classname);
           });
+        }
+        else {
+          // 用户自己的消息可以自己上传下载
+          //删除信息
+          if (text.charAt(0) == '-') {
+            //检测到'-'开头执行删除操作
+            const query = new AV.Query(classname);
+            query.descending('createdAt');
+            // 仅输入‘-’删除最后一项
+            if (text.slice(1) == '') {
+              query.first().then((object) => {
+                // JSON.parse()将JSON信息解析成JavaScript对象
+                // JSON.stringify() 方法将 JavaScript 对象转换为 JSON 字符串
+                alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
+                object.destroy().then(function () { //then等待destroy执行完成后执行下面
+                  IN.value = ''; // 清空文本框
+                  bush_massages_out(classname);
+                }).catch(function (error) {
+                  alert('删除失败: ' + error.message);
+                });
+              })
+            }
+            // 有删除内容时执行删除内容对应的项
+            else {
+              query.equalTo('value', text.slice(1));
+              query.first().then((object) => {
+                if (object) {
+                  alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
+                  object.destroy().then(function () { //then等待destroy执行完成后执行下面
+                    IN.value = ''; // 清空文本框
+                    bush_massages_out(classname);
+                  }).catch(function (error) {
+                    alert('删除失败: ' + error.message);
+                  });
+                }
+                else {
+                  alert('未找到');
+                  IN.value = ''; // 清空文本框
+                }
+              })
+            }
+          }
+          // 上传信息
+          else {
+            if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
+              // 执行上传操作
+              const value = text;
+              const time = date.getMonth() + 1 + '.' + date.getDate() + '/' + date.getHours() + ':' + date.getMinutes();
+              textObject.set('time', time);
+              textObject.set('value', value);
+              textObject.save().then(() => {
+                //then等待save执行完成后执行下面
+                IN.value = ''; // 清空文本框
+                bush_massages_out(classname);
+              });
+            }
+          }
         }
       }
     }
@@ -160,20 +182,37 @@ function bush_massages_in(username) {
 }
 
 //获取展示信息
-function bush_massages_out(username) {
-  document.getElementById("massages_out").innerHTML = username;
-  const query = new AV.Query(username);
-  query.find().then(results => {
-    results.forEach(record => {
-      document.getElementById("massages_out").innerHTML += "<br>";
-      document.getElementById("massages_out").innerHTML += record.get('time');
-      document.getElementById("massages_out").innerHTML += record.get('value');
+function bush_massages_out(classname) {
+  document.getElementById('massages_out').innerHTML = classname;
+  const query = new AV.Query(classname);
+  if (classname == 'chatspace') {
+    query.find().then(results => {
+      results.forEach(record => {
+        document.getElementById('massages_out').innerHTML += "<br>";
+        document.getElementById('massages_out').innerHTML += record.get('time');
+        document.getElementById('massages_out').innerHTML += record.get('name');
+        document.getElementById('massages_out').innerHTML += ":";
+        document.getElementById('massages_out').innerHTML += record.get('value');
+      })
     })
-  })
-  query.count().then((object) => {
-    resultcount = object;
-  })
+    query.count().then((object) => {
+      chatspacecount = object;
+    })
+  }
+  else {
+    query.find().then(results => {
+      results.forEach(record => {
+        document.getElementById('massages_out').innerHTML += "<br>";
+        document.getElementById('massages_out').innerHTML += record.get('time');
+        document.getElementById('massages_out').innerHTML += record.get('value');
+      })
+    })
+    query.count().then((object) => {
+      userspacecount = object;
+    })
+  }
   
+
 }
 
 // 登录系统
@@ -191,7 +230,7 @@ function login() {
   AV.User.logIn(username, password).then(function (user) {
     localStorage.setItem('sessionToken', user.getSessionToken());// 保存登录信息
     closelogin();
-    userstate();
+    panduan();
   }).catch(function (error) {
     alert(error.message);
   });
@@ -206,7 +245,6 @@ function closesignup() {
 }
 
 function signup() {
-
   // 获取用户输入的注册信息
   const username = document.getElementById('username-up').value;
   const password = document.getElementById('password-up').value;
@@ -234,57 +272,100 @@ function signout() {
 }
 
 // 更新用户信息
-function userstate(params) {
+function userstate(classname) {
   var currentUser = AV.User.current();
+  // 获取用户信息
   if (currentUser) {
-    // 根据用户角色查询某个数据表中的内容
-    const username = currentUser.get('username');
-    document.getElementById('user').style.display = 'block';
-    document.getElementById('login-button').style.display = 'none';
-    document.getElementById('signup-button').style.display = 'none';
-    document.getElementById('signout-button').style.display = 'block';
-    document.getElementById('user').innerHTML = username;
-    bush_massages_out(username);
-    bush_massages_in(username);
-    setTimeout(function(){ ToBottom()},200);
-    setTimeout(function () { update() }, 200);
+    if (classname == 'chatspace') {
+      bush_massages_out(classname);
+      bush_massages_in(classname);
+      setTimeout(function () { ToBottom() }, 200);
+      setTimeout(function () { update(classname) }, 200);
+
+    }
+    else {
+      // 根据用户角色查询某个数据表中的内容
+      const classname = currentUser.get('username');
+      document.getElementById('user').style.display = 'block';
+      document.getElementById('login-button').style.display = 'none';
+      document.getElementById('signup-button').style.display = 'none';
+      document.getElementById('signout-button').style.display = 'block';
+      document.getElementById('user').innerHTML = classname;
+      bush_massages_out(classname);
+      bush_massages_in(classname);
+      setTimeout(function () { ToBottom() }, 200);
+      setTimeout(function () { update(classname) }, 200);
+
+    }
   }
 }
 state();
-userstate();
+function panduan(params) {
+  if (document.getElementById('userspace').style.display == 'none') {
+    userstate('chatspace');
+  }
+  else {
+    userstate('userspace');
+  }
+}
+
 // 检测用户登录状态
 function state(params) {
   var sessionToken = localStorage.getItem('sessionToken');
   if (sessionToken) {
     AV.User.become(sessionToken).then(function (user) {
       // 恢复登录成功，执行后续操作
+      panduan();
     }).catch(function (error) {
       // 恢复登录失败，需要重新登录
     });
   }
 }
 
-
 // 实时更新(每一秒更新一次)
-function update() {
+function update(classname) {
+  if(classname=='chatspace'){
+    const query = new AV.Query(classname);
+    query.count().then((object) => {
+      if (object != chatspacecount) {
+        bush_massages_out(classname);
+        setTimeout(function () { ToBottom() }, 200);
+        chatspacecount = object;
+      }
+    })
+  }
+  else{
   const currentUser = AV.User.current();
-  const username = currentUser.get('username');
-  const query = new AV.Query(username);
+  const classname = currentUser.get('username');
+  const query = new AV.Query(classname);
   query.count().then((object) => {
-    if (object != resultcount) {
-      bush_massages_out(username);
-      setTimeout(function(){ ToBottom()},200);
-      resultcount = object;
+    if (object != userspacecount) {
+      bush_massages_out(classname);
+      setTimeout(function () { ToBottom() }, 200);
+      userspacecount = object;
     }
   })
-  setTimeout(function () { update() }, 1000);
+}
+  setTimeout(function () { update(classname) }, 1000);
 }
 
 // 自动滚动到底部
-// 定义函数以滚动到底部
 function ToBottom() {
   var messages = document.getElementById("massages_out");// 获取要滚动的元素
   messages.scrollTop = messages.scrollHeight;
+}
+
+function transform1() {
+  document.getElementById('userspace').style.display = 'none';
+  document.getElementById('chatspace').style.display = 'block';
+  // 传递参数
+  userstate('chatspace');
+}
+
+function transform2() {
+  document.getElementById('userspace').style.display = 'block';
+  document.getElementById('chatspace').style.display = 'none';
+  userstate('userspace');
 }
 // 将class和之前做对比
 // 不同就更新
