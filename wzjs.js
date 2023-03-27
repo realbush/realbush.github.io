@@ -2,8 +2,8 @@ var userspacecount = 0;
 var chatspacecount = 0;
 //leancloud
 AV.init({
-  appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
-  appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
+  appId: "qCl2W49peh6g3j4VLQD3DRmi-gzGzoHsz",
+  appKey: "tUYlROEu13KhcWvDe7UECLHc",
   serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
 });
 // 搜索引擎
@@ -85,15 +85,12 @@ function choucha() {
   }
 }
 
-
 // 实时信息
-// 上传信息
-function bush_massages_in(classname) {
+function bush_massages_in(classname) {// 上传信息
   const TextObject = AV.Object.extend(classname);
   const textObject = new TextObject();
   const IN = document.getElementById('in');
   IN.addEventListener('keydown', function (event) {
-
     if (event.key == 'Enter' && !event.shiftKey) {
       event.preventDefault(); // 阻止回车键默认行为
       // 创建一个文本对象
@@ -102,35 +99,40 @@ function bush_massages_in(classname) {
       const IN = document.getElementById('in');
       const date = new Date();
       const text = IN.value;
-      if (classname == 'chatspace') {
-        // 聊天室只能上传消息
+      if (classname == 'chatspace') {// 聊天室只能上传消息
         if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
-          // 执行上传操作
           const currentUser = AV.User.current();
           const name = currentUser.get('username');
-          const value = text;
           const time = date.getMonth() + 1 + '.' + date.getDate() + '/' + date.getHours() + ':' + date.getMinutes();
           textObject.set('time', time);
-          textObject.set('value', value);
+          textObject.set('value', text);
           textObject.set('name', name);
-          textObject.save().then(() => {
-            //then等待save执行完成后执行下面
+          textObject.save().then(() => {  //then等待save执行完成后执行下面    上传信息
             IN.value = ''; // 清空文本框
             bush_massages_out(classname);
           });
         }
-        else {
-          // 用户自己的消息可以自己上传下载
-          //删除信息
-          if (text.charAt(0) == '-') {
-            //检测到'-'开头执行删除操作
-            const query = new AV.Query(classname);
-            query.descending('createdAt');
-            // 仅输入‘-’删除最后一项
-            if (text.slice(1) == '') {
-              query.first().then((object) => {
-                // JSON.parse()将JSON信息解析成JavaScript对象
-                // JSON.stringify() 方法将 JavaScript 对象转换为 JSON 字符串
+      }
+      else {// 用户自己的消息可以自己上传下载
+        if (text.charAt(0) == '-') {//检测到'-'开头执行删除操作
+          const query = new AV.Query(classname);
+          query.descending('updatedAt');//按时间戳升序
+          // 仅输入‘-’删除最后一项
+          if (text.slice(1) == '') {
+            query.first().then((object) => {
+              alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);// JSON.parse()将JSON信息解析成JavaScript对象；JSON.stringify() 方法将 JavaScript 对象转换为 JSON 字符串
+              object.destroy().then(function () { //then等待destroy执行完成后执行下面
+                IN.value = ''; // 清空文本框
+                bush_massages_out(classname);
+              }).catch(function (error) {
+                alert('删除失败: ' + error.message);
+              });
+            })
+          }
+          else {//'-'后有内容
+            query.equalTo('value', text.slice(1));
+            query.first().then((object) => {
+              if (object) {
                 alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
                 object.destroy().then(function () { //then等待destroy执行完成后执行下面
                   IN.value = ''; // 清空文本框
@@ -138,42 +140,25 @@ function bush_massages_in(classname) {
                 }).catch(function (error) {
                   alert('删除失败: ' + error.message);
                 });
-              })
-            }
-            // 有删除内容时执行删除内容对应的项
-            else {
-              query.equalTo('value', text.slice(1));
-              query.first().then((object) => {
-                if (object) {
-                  alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
-                  object.destroy().then(function () { //then等待destroy执行完成后执行下面
-                    IN.value = ''; // 清空文本框
-                    bush_massages_out(classname);
-                  }).catch(function (error) {
-                    alert('删除失败: ' + error.message);
-                  });
-                }
-                else {
-                  alert('未找到');
-                  IN.value = ''; // 清空文本框
-                }
-              })
-            }
-          }
-          // 上传信息
-          else {
-            if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
-              // 执行上传操作
-              const value = text;
-              const time = date.getMonth() + 1 + '.' + date.getDate() + '/' + date.getHours() + ':' + date.getMinutes();
-              textObject.set('time', time);
-              textObject.set('value', value);
-              textObject.save().then(() => {
-                //then等待save执行完成后执行下面
+              }
+              else {
+                alert('未找到');
                 IN.value = ''; // 清空文本框
-                bush_massages_out(classname);
-              });
-            }
+              }
+            })
+          }
+        }
+        else {//未检测到'-'开头执行上传操作
+          if (text && text.trim() != '') { // 检查文本框值是否为 undefined 或 null
+            const value = text;
+            const time = date.getMonth() + 1 + '.' + date.getDate() + '/' + date.getHours() + ':' + date.getMinutes();
+            textObject.set('time', time);
+            textObject.set('value', value);
+            textObject.save().then(() => {
+              //then等待save执行完成后执行下面
+              IN.value = ''; // 清空文本框
+              bush_massages_out(classname);
+            });
           }
         }
       }
@@ -213,19 +198,15 @@ function bush_massages_out(classname) {
     })
     setTimeout(function () { ToBottom() }, 200);
   }
-  
-
 }
 
 // 登录系统
 function openlogin() {
   document.getElementById('login-modal').style.display = 'block';
 }
-
 function closelogin() {
   document.getElementById('login-modal').style.display = 'none';
 }
-
 function login() {
   const username = document.getElementById('username-in').value;
   const password = document.getElementById('password-in').value;
@@ -237,15 +218,14 @@ function login() {
     alert(error.message);
   });
 }
+
 // 注册系统
 function opensignup() {
   document.getElementById('signup-modal').style.display = 'block';
 }
-
 function closesignup() {
   document.getElementById('signup-modal').style.display = 'none';
 }
-
 function signup() {
   // 获取用户输入的注册信息
   const username = document.getElementById('username-up').value;
@@ -284,7 +264,6 @@ function userstate(classname) {
       bush_massages_in(classname);
       setTimeout(function () { ToBottom() }, 200);
       setTimeout(function () { update(classname) }, 200);
-
     }
     else {
       // 根据用户角色查询某个数据表中的内容
@@ -298,7 +277,6 @@ function userstate(classname) {
       bush_massages_in(classname);
       setTimeout(function () { ToBottom() }, 200);
       setTimeout(function () { update(classname) }, 200);
-
     }
   }
 }
@@ -358,18 +336,16 @@ function ToBottom() {
   messages.scrollTop = messages.scrollHeight;
 }
 
-function transform1() {
-  document.getElementById('userspace').style.display = 'none';
-  document.getElementById('chatspace').style.display = 'block';
-  // 传递参数
-  userstate('chatspace');
-}
-
-function transform2() {
+function transform1() {//userspace转到chatspace
   document.getElementById('userspace').style.display = 'block';
   document.getElementById('chatspace').style.display = 'none';
-  userstate('userspace');
+  panduan();
 }
+
+function transform2() {//chatspace转到userspace
+  location.reload();
+}
+
 // 将class和之前做对比
 // 不同就更新
 /*
