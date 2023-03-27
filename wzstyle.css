@@ -49,10 +49,13 @@ a {
 /* 登录注册系统 */
 #user {
     position: absolute;
-    top: 0;
-    right: 100px;
     text-shadow: none;
+    top: 2%;
+    right: 100px;
+    width: 50px;
+    height: 35px;
     background-color: transparent;
+    border: none;
     border: none;
     display: none;
 }
