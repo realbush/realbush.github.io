@@ -2,8 +2,8 @@ var userspacecount = 0;
 var chatspacecount = 0;
 //leancloud
 AV.init({
-  appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
-  appKey: "DY1lYfRA7fDjPQKQXLCLk3L3",
+  appId: "qCl2W49peh6g3j4VLQD3DRmi-gzGzoHsz",
+  appKey: "tUYlROEu13KhcWvDe7UECLHc",
   serverURL: "https://5r9cek4p.lc-cn-n1-shared.com"
 });
 // 搜索引擎
