@@ -175,6 +175,7 @@ function bush_massages_out(username) {
     results.forEach(record => {
       document.getElementById("massages_out").innerHTML += "<br>";
       document.getElementById("massages_out").innerHTML += record.get('time');
+      document.getElementById("massages_out").innerHTML += ' | ';
       document.getElementById("massages_out").innerHTML += record.get('value');
     })
   })
