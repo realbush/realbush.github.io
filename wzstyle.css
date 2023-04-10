@@ -46,16 +46,13 @@ a {
     text-decoration: none;
 }
 
-/* 登录注册系统 */
-#user {
+/* -----------------------------------------------登录注册系统--------------------------------------------- */
+#user{
     position: absolute;
-    text-shadow: none;
-    top: 2%;
+    top: 0;
     right: 100px;
-    width: 50px;
-    height: 35px;
+    text-shadow:none;
     background-color: transparent;
-    border: none;
     border: none;
     display: none;
 }
@@ -64,6 +61,7 @@ a {
     position: absolute;
     top: 10px;
     right: 30px;
+
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -75,6 +73,7 @@ a {
     position: absolute;
     top: 10px;
     right: 90px;
+
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -82,10 +81,11 @@ a {
     cursor: pointer;
 }
 
-#signout-button {
+#signout-button{
     position: absolute;
     top: 10px;
     right: 30px;
+
     width: 50px;
     height: 35px;
     background-color: transparent;
@@ -93,34 +93,6 @@ a {
     cursor: pointer;
     display: none;
 }
-
-#chatspace {
-    position: absolute;
-    top: 10px;
-    right: 200px;
-    width: 50px;
-    height: 35px;
-    font-size: 14px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    
-}
-
-#userspace {
-    position: absolute;
-    top: 10px;
-    right: 200px;
-    width: 50px;
-    height: 35px;
-    font-size: 14px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: block;
-    display: none;
-}
-
 .modal {
     display: none;
     position: fixed;
@@ -196,7 +168,7 @@ a {
     cursor: pointer;
 }
 
-/* 时间 */
+/* --------------------------------------------------时间-------------------------------------------- */
 #time {
     width: 100%;
     text-align: center;
@@ -207,7 +179,7 @@ a {
     text-shadow: 0 0 5px #f2ff00, 0 0 10px #f2ff00, 0 0 20px #f2ff00, 0 0 2px black;
 }
 
-/* 实时信息 */
+/* ----------------------------------------------备忘录------------------------------------------ */
 #massages {
     float: left;
     width: 20%;
@@ -217,24 +189,21 @@ a {
 #massages_out {
     overflow-y: auto;
     margin: 2%;
-    height: 400px;
+    height: 450px;
     font-size: 12px;
     border-radius: 20px;
     padding: 10px;
     background-color: transparent;
     box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
 }
-
 /* 为什么滚动条直接消失了 */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 #massages_in {
-    float: left;
     margin: 2%;
-    height: 50px;
-    width: 96%;
+    height: 40px;
     border-radius: 10px;
     background-color: transparent;
     box-shadow: 2px 2px 5px rgb(255, 255, 255), 1px 2px 5px #000000;
@@ -249,16 +218,12 @@ a {
     font-size: 14px;
 }
 
-
-
-/* 搜索框 */
+/* ------------------------------------搜索框--------------------------------------- */
 #bush-searchs {
     padding-left: 2%;
-    display: flex;
-
+    float: left;
     background-color: transparent;
     width: 77%;
-
 }
 
 #Search-Engines {
@@ -290,19 +255,7 @@ a {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
-.search__button {
-    border: none;
-    background-color: #f4f2f2;
-    margin-top: .1em;
-}
-
-.search__icon {
-    height: 1.3em;
-    width: 1.3em;
-    fill: #b4b4b4;
-}
-
-/* 网站 */
+/* -----------------------------------------网站部分----------------------------------------------- */
 #bush-webs {
     padding-left: 2%;
     float: left;
@@ -327,7 +280,7 @@ a {
     cursor: pointer;
 }
 
-.hang:active {
+.hang:hover {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
 
@@ -335,7 +288,7 @@ a {
     box-shadow: inset 3px 3px 12px #a8a8a8;
 }
 
-/* 练习部分 */
+/* ----------------------------------------------练习部分-------------------------------------------- */
 #bush-practice {
     float: left;
     width: 80%;
@@ -387,7 +340,7 @@ a {
     display: none;
 }
 
-/* 手机显示更改部分 */
+/* -----------------------------------------手机显示更改部分-------------------------------------------- */
 @media screen and (max-width: 600px) {
     #title {
         padding-top: 5px;
@@ -404,53 +357,6 @@ a {
         display: inline-block;
         padding: 5px;
     }
-
-    #user {
-        top: 1.6%;
-        right: 13%;
-        width: 40px;
-        height: 25px;
-        font-size: 1em;
-    }
-
-    #login-button {
-        top: 5px;
-        right: 1%;
-        width: 40px;
-        height: 30px;
-    }
-
-
-    #signup-button {
-        top: 5px;
-        right: 10%;
-        width: 40px;
-        height: 30px;
-    }
-
-    #signout-button {
-        top: 5px;
-        right: 5px;
-        width: 40px;
-        height: 30px;
-    }
-
-    #chatspace {
-        top: 1.5%;
-        right: 40%;
-        width: 40px;
-        height: 25px;
-        font-size: 1em;
-    }
-
-    #userspace {
-        top: 1.5%;
-        right: 40%;
-        width: 40px;
-        height: 25px;
-        font-size: 1em;
-    }
-
 
     /* 时间 */
     #time {
