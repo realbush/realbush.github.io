@@ -145,6 +145,7 @@ function state(params) {
   if (sessionToken) {//检测用户状态
     AV.User.become(sessionToken).then(function (user) {
       // 恢复登录成功，执行后续操作
+      localStorage.removeItem('sessionToken');
       userstate();
     }).catch(function (error) {
       // 恢复登录失败，需要重新登录
