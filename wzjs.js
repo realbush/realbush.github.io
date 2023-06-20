@@ -1,5 +1,5 @@
 var resultcount = 0;
-
+console.log(screen.availWidth);
 //leancloud
 AV.init({
   appId: "5r9cEk4P2ABVYozIf6nS6ZmO-gzGzoHsz",
