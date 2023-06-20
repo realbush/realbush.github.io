@@ -61,31 +61,6 @@ function shijian() {
   setTimeout("shijian()", 1000);
 }
 
-//练习部分
-practice();
-function practice(params) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('get', 'wz.json');
-  xhr.send();
-  xhr.onload = function () {
-    respond = this.responseText;
-    keys = Object.keys(JSON.parse(respond));
-    values = Object.values(JSON.parse(respond));
-  }
-}
-function choucha() {
-  const x = document.getElementById("x").innerHTML;
-  if (x == 1) {
-    document.getElementById('x').innerHTML = 0;
-    document.getElementById('dingyi').innerHTML = "A:" + values[num];
-  }
-  else {
-    document.getElementById('x').innerHTML = 1;
-    num = Math.floor(Math.random() * keys.length);
-    document.getElementById('dingyi').innerHTML = "Q:" + keys[num];
-  }
-}
-
 // 登录系统
 function openlogin() {
   document.getElementById('login-modal').style.display = 'block';
