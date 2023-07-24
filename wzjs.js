@@ -104,8 +104,8 @@ function signup() {
 // 注销系统
 function signout() {
   const currentUser = AV.User.current();
-  const username = currentUser.get('username');
-  alert(username + '即将滚蛋')
+  // const username = currentUser.get('username');
+  // alert(username + '即将滚蛋')
   AV.User.logOut().then(() => {
     // 成功退出登录
     location.reload();
@@ -179,7 +179,7 @@ function bush_massages_in(username) {
         query.descending('createdAt');
         if (text.slice(1) == '') {   // 仅‘-’删除最后一项
           query.first().then((object) => {
-            alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
+            // alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
             object.destroy().then(function () { //then等待destroy执行完成后执行下面
               IN.value = ''; // 清空文本框
               bush_massages_out(username);
@@ -192,7 +192,7 @@ function bush_massages_in(username) {
           query.equalTo('value', text.slice(1));
           query.first().then((object) => {
             if (object) {
-              alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
+              // alert('你将会删除' + JSON.parse(JSON.stringify(object)).value);
               object.destroy().then(function () { //then等待destroy执行完成后执行下面
                 IN.value = ''; // 清空文本框
                 bush_massages_out(username);
